@@ -20,5 +20,3 @@ def extraer_datos_clientes():
                 "iata": iata
             })
     return clientes
-
-print(extraer_datos_clientes())
