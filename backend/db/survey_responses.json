@@ -192,6 +192,26 @@
         "preferencia": "pene"
       }
     ]
+  },
+  {
+    "trip_id": "trip_20250503202154603637",
+    "respuestas": [
+      {
+        "nombre": "mipalo",
+        "interes": [
+          "nocturno",
+          "comida"
+        ],
+        "presupuestomax": "50",
+        "presupuestoImportancia": "1",
+        "origen": "leganes",
+        "seguridadLGTB": "indiferente",
+        "seguridadmuj": "si",
+        "fechaInicio": "2025-05-18",
+        "internet": "indiferente",
+        "idiomas": "frances aleman ingles ",
+        "preferencia": "me encanta la pasta carbonara y los dulces"
+      }
+    ]
   }
-  
 ]

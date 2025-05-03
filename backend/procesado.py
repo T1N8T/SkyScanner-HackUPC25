@@ -1,6 +1,8 @@
 import json
 import pandas as pd
 import ast
+from skyscanner_api import crear_busqueda, obtener_resultados
+from tratadodatoscl import extraer_datos_clientes
 
 def descartar_paises(trip_id):
     with open("db/survey_responses.json", "r", encoding="utf-8") as f:
@@ -125,3 +127,21 @@ def descartar_paises(trip_id):
         json.dump(trip_candidates, f, ensure_ascii=False, indent=2)
 
     return iatas
+
+def media_ponderada_presupuesto(trip_id):
+    with open("db/survey_responses.json", "r", encoding="utf-8") as f:
+        data = json.load(f)
+    viaje = next((v for v in data if v["trip_id"] == trip_id), None)
+    if not viaje:
+        return None
+    suma = 0
+    suma_pesos = 0
+    for r in viaje["respuestas"]:
+        try:
+            p = float(r.get("presupuestomax", 0))
+            peso = float(r.get("presupuestoImportancia", 1))
+            suma += p * peso
+            suma_pesos += peso
+        except Exception:
+            continue
+    return suma / suma_pesos if suma_pesos else 0
