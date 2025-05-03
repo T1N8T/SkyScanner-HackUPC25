@@ -30,11 +30,10 @@ def obtener_iatas_con_gemini(origen):
 
 def obtener_recomendacion_gemini(trip_id):
     promt = obtener_prompt_recomendacion(trip_id)
+    if "No se encontraron aeropuertos" in promt["prompt"]:
+        return promt["prompt"]
     response = client.models.generate_content(
-        model="gemini-2.0-flash", contents=promt["prompt"],
-        temperature=promt["temperature"],
-        max_tokens=promt["max_tokens"],
-        top_p=promt["top_p"],
-        frequency_penalty=promt["frequency_penalty"],
-        presence_penalty=promt["presence_penalty"]
+        model="gemini-2.0-flash",
+        contents=promt["prompt"]
     )
+    return response.text.strip()

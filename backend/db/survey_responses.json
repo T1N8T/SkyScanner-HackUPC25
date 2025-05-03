@@ -231,5 +231,143 @@
         "preferencia": "no"
       }
     ]
+  },
+  {
+    "trip_id": "trip_20250503205150006824",
+    "respuestas": [
+      {
+        "nombre": "Jose",
+        "interes": [
+          "playa"
+        ],
+        "presupuestomax": "400",
+        "presupuestoImportancia": "3",
+        "origen": "BARCELONA",
+        "seguridadLGTB": "no",
+        "seguridadmuj": "no",
+        "fechaInicio": "",
+        "internet": "indiferente",
+        "idiomas": "aleman,ingles,español",
+        "preferencia": "me gusta mucho esquiar"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip_20250503205538030433",
+    "respuestas": [
+      {
+        "nombre": "Juanma",
+        "interes": [
+          "comida"
+        ],
+        "presupuestomax": "200",
+        "presupuestoImportancia": "2",
+        "origen": "Barcelona",
+        "seguridadLGTB": "indiferente",
+        "seguridadmuj": "no",
+        "fechaInicio": "",
+        "internet": "indiferente",
+        "idiomas": "ingles,frances,español",
+        "preferencia": "me gusta esquiar"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip_20250503222515743574",
+    "respuestas": [
+      {
+        "nombre": "Manuel",
+        "interes": [],
+        "presupuestomax": "4",
+        "presupuestoImportancia": "1",
+        "origen": "Barcelona",
+        "seguridadLGTB": "no",
+        "seguridadmuj": "no",
+        "fechaInicio": "",
+        "internet": "no",
+        "idiomas": "ingles",
+        "preferencia": "no tengo más preferencias"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip_20250503222911163680",
+    "respuestas": [
+      {
+        "nombre": "Carmen",
+        "interes": [
+          "playa"
+        ],
+        "presupuestomax": "499",
+        "presupuestoImportancia": "3",
+        "origen": "Barcelona",
+        "seguridadLGTB": "no",
+        "seguridadmuj": "si",
+        "fechaInicio": "2025-07-04",
+        "internet": "no",
+        "idiomas": "aleman,portugues,ingles",
+        "preferencia": "me gusta esquiar"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip_20250503223340722320",
+    "respuestas": [
+      {
+        "nombre": "David",
+        "interes": [
+          "comida"
+        ],
+        "presupuestomax": "2333",
+        "presupuestoImportancia": "1",
+        "origen": "Valencia",
+        "seguridadLGTB": "no",
+        "seguridadmuj": "no",
+        "fechaInicio": "0025-08-24",
+        "internet": "no",
+        "idiomas": "inglés",
+        "preferencia": "me gusta esquiar"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip_20250503224001368921",
+    "respuestas": [
+      {
+        "nombre": "Manuela",
+        "interes": [
+          "arte"
+        ],
+        "presupuestomax": "400",
+        "presupuestoImportancia": "2",
+        "origen": "Valencia",
+        "seguridadLGTB": "no",
+        "seguridadmuj": "si",
+        "fechaInicio": "2026-01-14",
+        "internet": "indiferente",
+        "idiomas": "ingles",
+        "preferencia": "me gusta esquiar"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip_20250503224530079258",
+    "respuestas": [
+      {
+        "nombre": "David",
+        "interes": [
+          "comida"
+        ],
+        "presupuestomax": "11",
+        "presupuestoImportancia": "5",
+        "origen": "Punta Cana",
+        "seguridadLGTB": "no",
+        "seguridadmuj": "no",
+        "fechaInicio": "2025-09-23",
+        "internet": "indiferente",
+        "idiomas": "Español, Aleman, andaluz",
+        "preferencia": "No me gustan los panchitos"
+      }
+    ]
   }
 ]

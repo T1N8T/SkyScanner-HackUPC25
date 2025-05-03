@@ -6,7 +6,7 @@ from flask_cors import CORS
 from skyscanner_api import crear_busqueda, obtener_resultados
 from gemini_api import obtener_recomendacion_gemini
 from datetime import datetime
-# from procesado import procesar_resultados
+from procesado import descartar_paises
 
 app = Flask(__name__)
 CORS(app)
@@ -67,6 +67,17 @@ def recomendacion():
     try:
         respuesta = obtener_recomendacion_gemini(trip_id)
         return jsonify({"status": "success", "recomendacion": respuesta})
+    except Exception as e:
+        print("Error detectado:", e)
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+@app.route("/api/procesar", methods=["POST"])
+def procesar():
+    datos = request.json
+    trip_id = datos.get("trip_id")
+    try:
+        descartar_paises(trip_id)
+        return jsonify({"status": "success"})
     except Exception as e:
         print("Error detectado:", e)
         return jsonify({"status": "error", "message": str(e)}), 500

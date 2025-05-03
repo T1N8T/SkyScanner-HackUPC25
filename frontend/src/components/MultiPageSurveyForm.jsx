@@ -71,6 +71,14 @@ export default function MultiPageSurveyForm() {
   const mostrarRecomendacion = async () => {
     setCargando(true);
     try {
+      // Primero procesar los datos
+      await fetch("http://localhost:5000/api/procesar", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ trip_id: tripId }),
+      });
+
+      // Luego pedir la recomendación
       const response = await fetch("http://localhost:5000/api/recomendacion", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
