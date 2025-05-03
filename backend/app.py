@@ -6,9 +6,8 @@ from flask_cors import CORS
 from skyscanner_api import crear_busqueda, obtener_resultados
 from gemini_api import obtener_recomendacion_gemini
 from datetime import datetime
-from tratadodatoscl import extraer_datos_clientes, media_ponderada_presupuesto
-# from procesado import procesar_resultados
-from procesado import descartar_paises
+from tratadodatoscl import extraer_datos_clientes
+from procesado import *
 
 app = Flask(__name__)
 CORS(app)
