@@ -72,5 +72,104 @@
         "preferencia": "asdf"
       }
     ]
+  },
+  {
+    "trip_id": "trip_20250503192616597062",
+    "respuestas": [
+      {
+        "nombre": "Da",
+        "interes": [
+          "aventuras",
+          "arte"
+        ],
+        "presupuestomax": "11",
+        "presupuestoImportancia": "",
+        "origen": "1",
+        "seguridadLGTB": "indiferente",
+        "seguridadmuj": "indiferente",
+        "fechaInicio": "",
+        "internet": "no",
+        "idiomas": "33",
+        "preferencia": "33"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip_20250503192812267956",
+    "respuestas": [
+      {
+        "nombre": "epepe",
+        "interes": [
+          "aventuras",
+          "arte"
+        ],
+        "presupuestomax": "89",
+        "presupuestoImportancia": "",
+        "origen": "",
+        "seguridadLGTB": "si",
+        "seguridadmuj": "si",
+        "fechaInicio": "",
+        "internet": "",
+        "idiomas": "",
+        "preferencia": "2"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip_20250503193108563705",
+    "respuestas": [
+      {
+        "nombre": "",
+        "interes": [],
+        "presupuestomax": "",
+        "presupuestoImportancia": "",
+        "origen": "",
+        "seguridadLGTB": "",
+        "seguridadmuj": "",
+        "fechaInicio": "",
+        "internet": "",
+        "idiomas": "",
+        "preferencia": "69"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip_20250503193836203260",
+    "respuestas": [
+      {
+        "nombre": "jijija",
+        "interes": [
+          "comida",
+          "nocturno"
+        ],
+        "presupuestomax": "300",
+        "presupuestoImportancia": "4",
+        "origen": "españa",
+        "seguridadLGTB": "indiferente",
+        "seguridadmuj": "indiferente",
+        "fechaInicio": "",
+        "internet": "",
+        "idiomas": "",
+        "preferencia": "no"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip_20250503194047931639",
+    "respuestas": [
+      {
+        "nombre": "",
+        "interes": [],
+        "presupuestomax": "",
+        "presupuestoImportancia": "",
+        "origen": "",
+        "seguridadLGTB": "",
+        "seguridadmuj": "",
+        "fechaInicio": "",
+        "internet": "",
+        "idiomas": "",
+        "preferencia": "uhiuiu"
+      }
+    ]
   }
 ]
