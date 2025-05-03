@@ -1,153 +1,40 @@
 [
   {
-    "nombre": "Pau",
-    "interes": "comida",
-    "presupuesto": "50"
+    "trip_id": "abc123",
+    "respuestas": [
+      {
+        "user_id": "u1",
+        "nombre": "Pau",
+        "interes": "comida",
+        "presupuesto": "50",
+        "seguridadmuj": "si"
+      },
+      {
+        "user_id": "u2",
+        "nombre": "David",
+        "interes": "playa",
+        "presupuesto": "100",
+        "seguridadmuj": "no"
+      }
+    ]
   },
   {
-    "nombre": "",
-    "interes": "",
-    "presupuesto": "",
-    "pregunta4": "",
-    "pregunta5": "",
-    "pregunta6": "",
-    "pregunta7": "",
-    "pregunta8": "",
-    "pregunta9": "",
-    "pregunta10": "",
-    "pregunta11": "",
-    "pregunta12": "",
-    "pregunta13": "doijcdlkf"
-  },
-  {
-    "nombre": "David ",
-    "experiencias": "",
-    "presupuestomax": "",
-    "transporte": "",
-    "clima": "",
-    "ambiente": "",
-    "seguridadmuj": "",
-    "fechas": "",
-    "eventos": "",
-    "internet": "",
-    "alojamiento": "",
-    "leyes": "",
-    "seguirdad": "",
-    "preferencia": ""
-  },
-  {
-    "nombre": "Da",
-    "experiencias": "",
-    "presupuestomax": "",
-    "transporte": "",
-    "clima": "",
-    "ambiente": "",
-    "seguridadmuj": "",
-    "fechas": "",
-    "eventos": "",
-    "internet": "",
-    "alojamiento": "",
-    "leyes": "",
-    "seguirdad": "",
-    "preferencia": ""
-  },
-  {
-    "nombre": "",
-    "interes": [],
-    "presupuestomax": "",
-    "transporte": "",
-    "clima": "",
-    "ambiente": "",
-    "seguridadmuj": "",
-    "fechas": "",
-    "eventos": "",
-    "internet": "",
-    "alojamiento": "",
-    "leyes": "",
-    "seguirdad": "",
-    "preferencia": "",
-    "pregunta13": "ojho"
-  },
-  {
-    "nombre": "",
-    "interes": [],
-    "presupuestomax": "",
-    "transporte": "",
-    "clima": "",
-    "ambiente": "",
-    "seguridadmuj": "",
-    "fechas": "",
-    "eventos": "",
-    "internet": "",
-    "alojamiento": "",
-    "leyes": "",
-    "seguirdad": "",
-    "preferencia": "",
-    "pregunta13": "hola"
-  },
-  {
-    "nombre": "David",
-    "experiencias": "",
-    "presupuestomax": "",
-    "transporte": "",
-    "clima": "",
-    "ambiente": "",
-    "seguridadmuj": "",
-    "fechas": "",
-    "eventos": "",
-    "internet": "",
-    "alojamiento": "",
-    "leyes": "",
-    "seguirdad": "",
-    "preferencia": ""
-  },
-  {
-    "nombre": "",
-    "interes": [],
-    "presupuestomax": "",
-    "transporte": "",
-    "clima": "",
-    "ambiente": "",
-    "seguridadmuj": "",
-    "fechas": "",
-    "eventos": "",
-    "internet": "",
-    "alojamiento": "",
-    "leyes": "",
-    "seguirdad": "",
-    "preferencia": "",
-    "pregunta13": "HOL"
-  },
-  {
-    "nombre": "",
-    "interes": [],
-    "presupuestomax": "",
-    "origen": "",
-    "seguridadLGTB": "",
-    "seguridadmuj": "",
-    "fechas": "",
-    "eventos": "",
-    "internet": "",
-    "alojamiento": "",
-    "leyes": "",
-    "seguirdad": "",
-    "preferencia": "",
-    "pregunta13": "h"
-  },
-  {
-    "nombre": "",
-    "interes": [],
-    "presupuestomax": "",
-    "origen": "",
-    "seguridadLGTB": "",
-    "seguridadmuj": "",
-    "fechas": "",
-    "eventos": "",
-    "internet": "",
-    "alojamiento": "",
-    "leyes": "",
-    "seguirdad": "",
-    "preferencia": "",
-    "pregunta13": "h"
+    "trip_id": "otro_viaje",
+    "respuestas": [
+      {
+        "user_id": "u3",
+        "nombre": "Ana",
+        "interes": "cultura",
+        "presupuesto": "200",
+        "seguridadmuj": "si"
+      },
+      {
+        "user_id": "u4",
+        "nombre": "Luis",
+        "interes": "aventura",
+        "presupuesto": "150",
+        "seguridadmuj": "no"
+      }
+    ]
   }
 ]
