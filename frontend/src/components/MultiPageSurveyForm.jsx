@@ -67,7 +67,6 @@ export default function MultiPageSurveyForm() {
   const prevPage = () => setCurrentPage((prev) => prev - 1);
 
   
-  }
   if (enviado && !mostrarResultados) {
     return (
       <div>
@@ -471,3 +470,4 @@ export default function MultiPageSurveyForm() {
 )}
     </form>
   );
+}

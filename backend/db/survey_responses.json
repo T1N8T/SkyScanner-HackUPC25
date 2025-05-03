@@ -213,5 +213,23 @@
         "preferencia": "jiscas"
       }
     ]
+  },
+  {
+    "trip_id": "trip_20250503203035514784",
+    "respuestas": [
+      {
+        "nombre": "eieieie",
+        "interes": [],
+        "presupuestomax": "",
+        "presupuestoImportancia": "",
+        "origen": "",
+        "seguridadLGTB": "",
+        "seguridadmuj": "",
+        "fechaInicio": "",
+        "internet": "",
+        "idiomas": "",
+        "preferencia": "no"
+      }
+    ]
   }
 ]
