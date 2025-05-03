@@ -179,7 +179,12 @@ export default function MultiPageSurveyForm() {
               min="1"
               max="5"
               value={form.presupuestoImportancia}
-              onChange={handleChange}
+              onChange={(e) => {
+                const value = e.target.value;
+                if (value === "" || (Number(value) >= 1 && Number(value) <= 5)) {
+                  setForm({ ...form, presupuestoImportancia: value });
+                }
+              }}
               required
             />
           </label>
