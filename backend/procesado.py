@@ -103,10 +103,12 @@ def descartar_paises(trip_id):
                 except Exception:
                     return False
 
-            iatas_con_interes = skyscanner_df[skyscanner_df.apply(tiene_vibe, axis=1)]["IATA"].tolist()
+            # Filtra skyscanner_df por los IATAs actuales y por el interés
+            skyscanner_filtrado = skyscanner_df[skyscanner_df["IATA"].isin(iatas)]
+            iatas_con_interes = skyscanner_filtrado[skyscanner_filtrado.apply(tiene_vibe, axis=1)]["IATA"].tolist()
             iatas = [iata for iata in iatas if iata in iatas_con_interes]
 
-    # --- GUARDAR EN trip_candidates.json ---
+    # --- GUARDAR SOLO ID Y IATAS EN trip_candidates.json ---
     try:
         with open("db/trip_candidates.json", "r", encoding="utf-8") as f:
             trip_candidates = json.load(f)
@@ -116,7 +118,6 @@ def descartar_paises(trip_id):
     trip_candidates = [c for c in trip_candidates if c.get("trip_id") != trip_id]
     trip_candidates.append({
         "trip_id": trip_id,
-        "countries": paises_filtrados,
         "iatas": iatas
     })
 
