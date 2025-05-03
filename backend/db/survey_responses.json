@@ -192,6 +192,26 @@
         "preferencia": "pene"
       }
     ]
+  },
+  {
+    "trip_id": "trip_20250503201430210551",
+    "respuestas": [
+      {
+        "nombre": "holi",
+        "interes": [
+          "comida",
+          "arte"
+        ],
+        "presupuestomax": "1000",
+        "presupuestoImportancia": "3",
+        "origen": "30",
+        "seguridadLGTB": "indiferente",
+        "seguridadmuj": "indiferente",
+        "fechaInicio": "",
+        "internet": "no",
+        "idiomas": "",
+        "preferencia": "jiscas"
+      }
+    ]
   }
-  
 ]

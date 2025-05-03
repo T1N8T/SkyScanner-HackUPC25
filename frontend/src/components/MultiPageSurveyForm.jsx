@@ -17,6 +17,7 @@ export default function MultiPageSurveyForm() {
   const [currentPage, setCurrentPage] = useState(0); // Controla la página actual
   const [enviado, setEnviado] = useState(false);
   const [tripId, setTripId] = useState(null);
+  const [mostrarResultados, setMostrarResultados] = useState(false);
 
 
   const handleChange = (e) => {
@@ -65,7 +66,9 @@ export default function MultiPageSurveyForm() {
   const nextPage = () => setCurrentPage((prev) => prev + 1);
   const prevPage = () => setCurrentPage((prev) => prev - 1);
 
-  if (enviado) {
+  
+  }
+  if (enviado && !mostrarResultados) {
     return (
       <div>
         <p>¡Gracias por responder!</p>
@@ -74,9 +77,35 @@ export default function MultiPageSurveyForm() {
             Tu código de viaje es: <strong>{tripId}</strong>
           </p>
         )}
+        <button onClick={() => setMostrarResultados(true)}>
+          Ver mis resultados
+        </button>
       </div>
     );
   }
+  if (enviado && mostrarResultados) {
+    return (
+      <div>
+        <h2>¡Estos son tus resultados!</h2>
+        <ul>
+          <li><strong>Nombre:</strong> {form.nombre}</li>
+          <li><strong>Intereses:</strong> {form.interes.join(", ")}</li>
+          <li><strong>Presupuesto máximo:</strong> {form.presupuestomax} €</li>
+          <li><strong>Importancia del presupuesto:</strong> {form.presupuestoImportancia}</li>
+          <li><strong>Origen:</strong> {form.origen}</li>
+          <li><strong>Seguridad mujeres:</strong> {form.seguridadmuj}</li>
+          <li><strong>Seguridad LGTB:</strong> {form.seguridadLGTB}</li>
+          <li><strong>Fecha inicio:</strong> {form.fechaInicio}</li>
+          <li><strong>Internet:</strong> {form.internet}</li>
+          <li><strong>Idiomas:</strong> {form.idiomas}</li>
+          <li><strong>Preferencias adicionales:</strong> {form.preferencia}</li>
+        </ul>
+        <button onClick={() => window.location.reload()}>Volver a empezar</button>
+      </div>
+    );
+  }
+
+  // ...tu return principal del formulario...
 
   return (
     <form onSubmit={handleSubmit}>
@@ -442,4 +471,3 @@ export default function MultiPageSurveyForm() {
 )}
     </form>
   );
-}
