@@ -11,8 +11,18 @@ api_key = os.getenv("GEMINI_API_KEY")
 # Crear el cliente de GenAI
 client = genai.Client(api_key=api_key)
 
-# Generar contenido con el modelo
-response = client.models.generate_content(
-    model="gemini-2.0-flash", contents="Explain how AI works in a few words, not more than 15 words.",
-)
-print(response.text)
+def obtener_iatas_con_gemini(origen):
+    prompt = (
+        f"Dame solo una lista separada por comas de los códigos IATA de todos los aeropuertos "
+        f"de la ciudad de {origen} (puede haber más de uno, por ejemplo en Londres). "
+        f"Devuélveme solo los códigos IATA, sin explicaciones."
+    )
+    response = client.models.generate_content(
+        model="gemini-2.0-flash", contents=prompt,
+    )
+    # Procesar la respuesta para obtener una lista de IATA
+    texto = response.text.strip()
+    # Quitar posibles palabras y dejar solo los códigos
+    # Ejemplo de respuesta: "LHR, LGW, LCY, STN, LTN"
+    iatas = [iata.strip().upper() for iata in texto.replace('\n', ',').split(',') if iata.strip()]
+    return iatas
