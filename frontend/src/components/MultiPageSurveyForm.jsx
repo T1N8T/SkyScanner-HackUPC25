@@ -205,206 +205,234 @@ export default function MultiPageSurveyForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      {currentPage === 0 && (
-        <div>
-          <label>
-            Cuál es tu nombre?
-            <input
-              name="nombre"
-              value={form.nombre}
-              onChange={handleChange}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") e.preventDefault();
-              }}
-              required
-            />
-          </label>
-          <br />
-          <button type="button" onClick={nextPage}>
-            Siguiente
-          </button>
-        </div>
-      )}
-
-      {currentPage === 1 && (
-        <div>
-          <label>¿Qué tipo de experiencias buscas principalmente en un viaje? (elige hasta 2)</label>
+    <div>
+      <h1>Mípalo</h1>
+      <form onSubmit={handleSubmit}>
+        {currentPage === 0 && (
           <div>
             <label>
+              Cuál es tu nombre?
               <input
-                type="checkbox"
-                name="interes"
-                value="nocturno"
-                checked={form.interes.includes("nocturno")}
-                onChange={handleCheckboxChange}
+                name="nombre"
+                value={form.nombre}
+                onChange={handleChange}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") e.preventDefault();
+                }}
+                required
               />
-            Vida nocturna y entretenimiento
             </label>
             <br />
-            <label>
-              <input
-                type="checkbox"
-                name="interes"
-                value="playa"
-                checked={form.interes.includes("playa")}
-                onChange={handleCheckboxChange}
-              />
-              Playa
-            </label>
-            <br />
-            <label>
-              <input
-                type="checkbox"
-                name="interes"
-                value="arte"
-                checked={form.interes.includes("arte")}
-                onChange={handleCheckboxChange}
-              />
-              Arte y cultura
-            </label>
-            <br />
-            <label>
-              <input
-                type="checkbox"
-                name="interes"
-                value="comida"
-                checked={form.interes.includes("comida")}
-                onChange={handleCheckboxChange}
-              />
-              Buena comida
-            </label>
-            <br />
-            <label>
-              <input
-                type="checkbox"
-                name="interes"
-                value="aventuras"
-                checked={form.interes.includes("aventuras")}
-                onChange={handleCheckboxChange}
-              />
-              Aventuras al aire libre
-            </label>
+            <button
+              type="button"
+              onClick={nextPage}
+              disabled={!form.nombre.trim()}
+            >
+              Siguiente
+            </button>
           </div>
-          <br />
-          <button type="button" onClick={prevPage}>
-            Anterior
-          </button>
-          <button type="button" onClick={nextPage}>
-            Siguiente
-          </button>
-        </div>
-      )} 
-      {currentPage === 2 && (
-        <div>
-          <label>
-            ¿Cómo de importante considera el presupuesto máximo? (1 = Nada importante, 5 = Muy importante):
-            <input
-              name="presupuestoImportancia"
-              type="number"
-              min="1"
-              max="5"
-              value={form.presupuestoImportancia}
-              onChange={(e) => {
-                const value = e.target.value;
-                if (value === "" || (Number(value) >= 1 && Number(value) <= 5)) {
-                  setForm({ ...form, presupuestoImportancia: value });
-                }
-              }}
-              required
-            />
-          </label>
-          <br />
-          <label>
-      ¿Cuál es su presupuesto máximo? (en euros):
-      <input
-        name="presupuestomax"
-        type="number"
-        min="0"
-        value={form.presupuestomax}
-        onChange={handleChange}
-        required
-      />
-        </label>
-        <br />
-        <button type="button" onClick={prevPage}>
-          Anterior
-        </button>
-        <button type="button" onClick={nextPage}>
-          Siguiente
-        </button>
-      </div>
-    )}
-      {currentPage === 3 && (
-        <div>
-          <label>
-            ¿Cuál es tu lugar de origen?:
-            <input
-              name="origen"
-              value={form.origen}
-              onChange={handleChange}
-              required
-              onKeyDown={(e) => {
-                if (e.key === "Enter") e.preventDefault();
-              }}
-            />
-          </label>
-          <br />
-          <button type="button" onClick={prevPage}>
-            Anterior
-          </button>
-          <button type="button" onClick={nextPage}>
-            Siguiente
-          </button>
-        </div>
-      )}
-          {currentPage === 4 && (
-      <div>
-        <label>¿Te interesa que el destino sea especialmente seguro para mujeres? (elige una opción)</label>
-        <div>
-          <label>
-            <input
-              type="radio"
-              name="seguridadmuj"
-              value="si"
-              checked={form.seguridadmuj === "si"}
-              onChange={handleChange}
-            />
-           Sí, es una prioridad para mí.
-          </label>
-          <br />
-          <label>
-            <input
-              type="radio"
-              name="seguridadmuj"
-              value="no"
-              checked={form.seguridadmuj === "no"}
-              onChange={handleChange}
-            />
-            No es algo que considere necesario.
-          </label>
-          <br />
-          <label>
-            <input
-              type="radio"
-              name="seguridadmuj"
-              value="indiferente"
-              checked={form.seguridadmuj === "indiferente"}
-              onChange={handleChange}
-            />
-            Sí, pero no es un requisito excluyente.
-          </label>
-        </div>
-        <br />
-        <button type="button" onClick={prevPage}>
-          Anterior
-        </button>
-        <button type="button" onClick={nextPage}>
-          Siguiente
-        </button>
-      </div>
-    )}
-              {currentPage === 5 && (
+        )}
+
+        {currentPage === 1 && (
+          <div>
+            <label>¿Qué tipo de experiencias buscas principalmente en un viaje? (elige hasta 2)</label>
+            <div>
+              <label>
+                <input
+                  type="checkbox"
+                  name="interes"
+                  value="nocturno"
+                  checked={form.interes.includes("nocturno")}
+                  onChange={handleCheckboxChange}
+                />
+              Vida nocturna y entretenimiento
+              </label>
+              <br />
+              <label>
+                <input
+                  type="checkbox"
+                  name="interes"
+                  value="playa"
+                  checked={form.interes.includes("playa")}
+                  onChange={handleCheckboxChange}
+                />
+                Playa
+              </label>
+              <br />
+              <label>
+                <input
+                  type="checkbox"
+                  name="interes"
+                  value="arte"
+                  checked={form.interes.includes("arte")}
+                  onChange={handleCheckboxChange}
+                />
+                Arte y cultura
+              </label>
+              <br />
+              <label>
+                <input
+                  type="checkbox"
+                  name="interes"
+                  value="comida"
+                  checked={form.interes.includes("comida")}
+                  onChange={handleCheckboxChange}
+                />
+                Buena comida
+              </label>
+              <br />
+              <label>
+                <input
+                  type="checkbox"
+                  name="interes"
+                  value="aventuras"
+                  checked={form.interes.includes("aventuras")}
+                  onChange={handleCheckboxChange}
+                />
+                Aventuras al aire libre
+              </label>
+            </div>
+            <br />
+            <button type="button" onClick={prevPage}>
+              Anterior
+            </button>
+            <button
+              type="button"
+              onClick={nextPage}
+              disabled={form.interes.length === 0}
+            >
+              Siguiente
+            </button>
+          </div>
+        )}
+        {currentPage === 2 && (
+          <div>
+            <label>
+              ¿Cómo de importante considera el presupuesto máximo? (1 = Nada importante, 5 = Muy importante):
+              <input
+                name="presupuestoImportancia"
+                type="number"
+                min="1"
+                max="5"
+                value={form.presupuestoImportancia}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  if (value === "" || (Number(value) >= 1 && Number(value) <= 5)) {
+                    setForm({ ...form, presupuestoImportancia: value });
+                  }
+                }}
+                required
+              />
+            </label>
+            <br />
+            <label>
+              ¿Cuál es su presupuesto máximo? (en euros):
+              <input
+                name="presupuestomax"
+                type="number"
+                min="0"
+                value={form.presupuestomax}
+                onChange={handleChange}
+                required
+              />
+            </label>
+            <br />
+            <button type="button" onClick={prevPage}>
+              Anterior
+            </button>
+            <button
+              type="button"
+              onClick={nextPage}
+              disabled={
+                !form.presupuestoImportancia ||
+                !form.presupuestomax ||
+                Number(form.presupuestoImportancia) < 1 ||
+                Number(form.presupuestoImportancia) > 5 ||
+                Number(form.presupuestomax) <= 0
+              }
+            >
+              Siguiente
+            </button>
+          </div>
+        )}
+        {currentPage === 3 && (
+          <div>
+            <label>
+              ¿Cuál es tu lugar de origen?:
+              <input
+                name="origen"
+                value={form.origen}
+                onChange={handleChange}
+                required
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") e.preventDefault();
+                }}
+              />
+            </label>
+            <br />
+            <button type="button" onClick={prevPage}>
+              Anterior
+            </button>
+            <button
+              type="button"
+              onClick={nextPage}
+              disabled={!form.origen.trim()}
+            >
+              Siguiente
+            </button>
+          </div>
+        )}
+        {currentPage === 4 && (
+          <div>
+            <label>¿Te interesa que el destino sea especialmente seguro para mujeres? (elige una opción)</label>
+            <div>
+              <label>
+                <input
+                  type="radio"
+                  name="seguridadmuj"
+                  value="si"
+                  checked={form.seguridadmuj === "si"}
+                  onChange={handleChange}
+                />
+               Sí, es una prioridad para mí.
+              </label>
+              <br />
+              <label>
+                <input
+                  type="radio"
+                  name="seguridadmuj"
+                  value="no"
+                  checked={form.seguridadmuj === "no"}
+                  onChange={handleChange}
+                />
+                No es algo que considere necesario.
+              </label>
+              <br />
+              <label>
+                <input
+                  type="radio"
+                  name="seguridadmuj"
+                  value="indiferente"
+                  checked={form.seguridadmuj === "indiferente"}
+                  onChange={handleChange}
+                />
+                Sí, pero no es un requisito excluyente.
+              </label>
+            </div>
+            <br />
+            <button type="button" onClick={prevPage}>
+              Anterior
+            </button>
+            <button
+              type="button"
+              onClick={nextPage}
+              disabled={!form.seguridadmuj}
+            >
+              Siguiente
+            </button>
+          </div>
+        )}
+        {currentPage === 5 && (
           <div>
             <label>¿Te interesa que el destino sea especialmente seguro para personas LGTB? (elige una opción)</label>
             <div>
@@ -445,127 +473,147 @@ export default function MultiPageSurveyForm() {
             <button type="button" onClick={prevPage}>
               Anterior
             </button>
-            <button type="button" onClick={nextPage}>
+            <button
+              type="button"
+              onClick={nextPage}
+              disabled={!form.seguridadLGTB}
+            >
               Siguiente
             </button>
           </div>
         )}
-          {currentPage === 6 && (
-      <div>
-        <label>
-          ¿En qué rango de fechas le gustaría viajar?:
-        </label>
-        <br />
-        <label>
-          Fecha de inicio:
-          <input
-            name="fechaInicio"
-            type="date"
-            value={form.fechaInicio}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <br />
-        <button type="button" onClick={prevPage}>
-          Anterior
-        </button>
-        <button type="button" onClick={nextPage}>
-          Siguiente
-        </button>
-      </div>
-    )}
-      {currentPage === 7 && (
-  <div>
-    <label>¿Qué tan importante es la calidad del WiFi en el destino? (elige una opción)</label>
-    <div>
-      <label>
-        <input
-          type="radio"
-          name="internet"
-          value="si"
-          checked={form.internet === "si"}
-          onChange={handleChange}
-        />
-        Muy importante
-      </label>
-      <br />
-      <label>
-        <input
-          type="radio"
-          name="internet"
-          value="indiferente"
-          checked={form.internet === "indiferente"}
-          onChange={handleChange}
-        />
-        Poco importante
-      </label>
-      <br />
-      <label>
-        <input
-          type="radio"
-          name="internet"
-          value="no"
-          checked={form.internet === "no"}
-          onChange={handleChange}
-        />
-        No importante
-      </label>
+        {currentPage === 6 && (
+          <div>
+            <label>
+              ¿En qué rango de fechas le gustaría viajar?:
+            </label>
+            <br />
+            <label>
+              Fecha de inicio:
+              <input
+                name="fechaInicio"
+                type="date"
+                value={form.fechaInicio}
+                onChange={handleChange}
+                required
+              />
+            </label>
+            <br />
+            <button type="button" onClick={prevPage}>
+              Anterior
+            </button>
+            <button
+              type="button"
+              onClick={nextPage}
+              disabled={!form.fechaInicio}
+            >
+              Siguiente
+            </button>
+          </div>
+        )}
+        {currentPage === 7 && (
+          <div>
+            <label>¿Qué tan importante es la calidad del WiFi en el destino? (elige una opción)</label>
+            <div>
+              <label>
+                <input
+                  type="radio"
+                  name="internet"
+                  value="si"
+                  checked={form.internet === "si"}
+                  onChange={handleChange}
+                />
+                Muy importante
+              </label>
+              <br />
+              <label>
+                <input
+                  type="radio"
+                  name="internet"
+                  value="indiferente"
+                  checked={form.internet === "indiferente"}
+                  onChange={handleChange}
+                />
+                Poco importante
+              </label>
+              <br />
+              <label>
+                <input
+                  type="radio"
+                  name="internet"
+                  value="no"
+                  checked={form.internet === "no"}
+                  onChange={handleChange}
+                />
+                No importante
+              </label>
+            </div>
+            <br />
+            <button type="button" onClick={prevPage}>
+              Anterior
+            </button>
+            <button
+              type="button"
+              onClick={nextPage}
+              disabled={!form.internet}
+            >
+              Siguiente
+            </button>
+          </div>
+        )}
+        {currentPage === 8 && (
+          <div>
+            <label>
+              ¿En qué idiomas te defiendes?:
+              <input
+                name="idiomas"
+                type="text"
+                value={form.idiomas}
+                onChange={handleChange}
+                required
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") e.preventDefault();
+                }}
+              />
+            </label>
+            <br />
+            <button type="button" onClick={prevPage}>
+              Anterior
+            </button>
+            <button
+              type="button"
+              onClick={nextPage}
+              disabled={!form.idiomas.trim()}
+            >
+              Siguiente
+            </button>
+          </div>
+        )}
+        {currentPage === 9 && (
+          <div>
+            <label>
+              ¿Tienes alguna preferencia que no se haya mencionado previamente?:
+              <textarea
+                name="preferencia"
+                value={form.preferencia}
+                onChange={handleChange}
+                placeholder="Escribe aquí tus preferencias adicionales"
+                required
+              />
+            </label>
+            <br />
+            <button type="button" onClick={prevPage}>
+              Anterior
+            </button>
+            <button
+              type="submit"
+              disabled={!form.preferencia.trim()}
+            >
+              Enviar
+            </button>
+          </div>
+        )}
+      </form>
     </div>
-    <br />
-    <button type="button" onClick={prevPage}>
-      Anterior
-    </button>
-    <button type="button" onClick={nextPage}>
-      Siguiente
-    </button>
-  </div>
-)}
-      {currentPage === 8 && (
-  <div>
-    <label>
-      ¿En qué idiomas te defiendes?:
-      <input
-        name="idiomas"
-        type="text"
-        value={form.idiomas}
-        onChange={handleChange}
-        required
-        onKeyDown={(e) => {
-          if (e.key === "Enter") e.preventDefault();
-        }}
-      />
-    </label>
-    <br />
-    <button type="button" onClick={prevPage}>
-      Anterior
-    </button>
-    <button type="button" onClick={nextPage}>
-      Siguiente
-    </button>
-  </div>
-)}
-       {currentPage === 9 && (
-  <div>
-    <label>
-      ¿Tienes alguna preferencia que no se haya mencionado previamente?:
-      <textarea
-        name="preferencia"
-        value={form.preferencia}
-        onChange={handleChange}
-        placeholder="Escribe aquí tus preferencias adicionales"
-        required
-      />
-    </label>
-    <br />
-    <button type="button" onClick={prevPage}>
-      Anterior
-    </button>
-    <button type="submit" >
-      Enviar
-    </button>
-  </div>
-)}
-    </form>
   );
 }
