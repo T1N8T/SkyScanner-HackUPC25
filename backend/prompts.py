@@ -56,3 +56,4 @@ def obtener_prompt_recomendacion(trip_id):
         "frequency_penalty": 0.0,
         "presence_penalty": 0.0
     }
+

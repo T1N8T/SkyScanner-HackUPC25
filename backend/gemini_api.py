@@ -1,5 +1,6 @@
 from google import genai
 from dotenv import load_dotenv
+from prompts import *
 import os
 
 # Cargar variables de entorno desde el archivo .env
@@ -26,3 +27,14 @@ def obtener_iatas_con_gemini(origen):
     # Ejemplo de respuesta: "LHR, LGW, LCY, STN, LTN"
     iatas = [iata.strip().upper() for iata in texto.replace('\n', ',').split(',') if iata.strip()]
     return iatas
+
+def obtener_recomendacion_gemini(trip_id):
+    promt = obtener_prompt_recomendacion(trip_id)
+    response = client.models.generate_content(
+        model="gemini-2.0-flash", contents=promt["prompt"],
+        temperature=promt["temperature"],
+        max_tokens=promt["max_tokens"],
+        top_p=promt["top_p"],
+        frequency_penalty=promt["frequency_penalty"],
+        presence_penalty=promt["presence_penalty"]
+    )

@@ -4,6 +4,7 @@ import os
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from skyscanner_api import crear_busqueda, obtener_resultados
+from gemini_api import obtener_recomendacion_gemini
 from datetime import datetime
 # from procesado import procesar_resultados
 
@@ -55,6 +56,17 @@ def buscar_vuelo():
             json.dump(data, f, ensure_ascii=False, indent=2)
         print("JSON guardado correctamente.")
         return jsonify({"status": "success", "data": data})
+    except Exception as e:
+        print("Error detectado:", e)
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+@app.route("/api/recomendacion", methods=["POST"])
+def recomendacion():
+    datos = request.json
+    trip_id = datos.get("trip_id")
+    try:
+        respuesta = obtener_recomendacion_gemini(trip_id)
+        return jsonify({"status": "success", "recomendacion": respuesta})
     except Exception as e:
         print("Error detectado:", e)
         return jsonify({"status": "error", "message": str(e)}), 500
