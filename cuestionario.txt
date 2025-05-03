@@ -1,0 +1,67 @@
+1. ¿Qué tipo de experiencias buscas principalmente en un viaje? (elige hasta 3)
+a) Vida nocturna y entretenimiento.
+b) Playa.
+c) Destino poco conocido.
+d) Arte y cultura.
+e) Buena comida.
+f) Aventuras al aire libre.
+
+2. ¿Cuál es tu rango de presupuesto para todo el viaje?
+
+3. ¿Qué medios de transporte estás dispuesto/a a usar?
+a) Prefiero trenes y transporte terrestre por sostenibilidad.
+b) Estoy dispuesto/a a tomar vuelos cortos (menos de 3h).
+c) Transporte compartido (autobuses, BlaBlaCar, etc.) está bien.
+d) Quiero alquilar un coche en destino.
+e) Me da igual, elijo lo más barato o rápido.
+
+4. ¿Qué clima prefieres durante el viaje?
+a) Cálido y soleado
+b) Templado, entre 15 y 25°C
+c) Frío o nevado
+d) No me importa el clima
+
+5. ¿Con qué tipo de ambiente social te sientes más cómodo?
+a) Tranquilo, relajado, poca gente
+b) Familiar, amigable, turismo moderado
+c) Ambiente festivo, con vida nocturna
+d) Abierto, inclusivo y diverso
+e) No tengo preferencia
+
+6. ¿Te interesa que el destino sea especialmente seguro para mujeres, LGBTQ+ o minorías?
+a) Sí, es una prioridad para mí.
+b) Sí, pero no es un requisito excluyente.
+c) No es algo que considere necesario.
+
+7. ¿En qué fechas te gustaría viajar?
+
+8. ¿Te interesa que el destino tenga eventos durante tus fechas de viaje?
+a) Sí, me encantan los conciertos y festivales.
+b) Sí, me interesan eventos deportivos (fútbol, tenis, etc.).
+c) Me interesan ferias, carnavales o eventos culturales.
+d) No me interesan los eventos.
+
+9. ¿Necesitas buena conexión a internet durante el viaje?
+a) Sí, es imprescindible por trabajo o estudios.
+b) Preferible, pero puedo desconectar un poco.
+c) No, quiero desconectarme completamente.
+
+10. ¿Qué tipo de alojamiento prefieres?
+a) Hostales o albergues económicos
+b) Airbnb o apartamentos privados
+c) Hoteles de gama media
+d) Hoteles de lujo / Resorts
+e) No me importa mientras esté limpio y bien ubicado
+
+11. ¿Prefieres destinos con normas y leyes más permisivas?
+a) Sí, me gusta la libertad y la flexibilidad social.
+b) No me importa mucho mientras me sienta cómodo/a.
+c) Prefiero destinos con reglas claras y mayor orden social.
+
+12. ¿Qué tan importante es para ti la seguridad en el destino?
+a) Es una prioridad, quiero destinos con baja criminalidad y buena reputación.
+b) Me importa, pero no es lo más determinante.
+c) No suelo fijarme demasiado en eso.
+
+13. ¿Tienes alguna preferencia que no se haya mencionado previamente?
+
