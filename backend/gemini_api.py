@@ -11,8 +11,11 @@ api_key = os.getenv("GEMINI_API_KEY")
 # Crear el cliente de GenAI
 client = genai.Client(api_key=api_key)
 
-# Generar contenido con el modelo
-response = client.models.generate_content(
-    model="gemini-2.0-flash", contents="dame lista de los 3 IATA más cercanos a la provincia de albacete",
-)
-print(response.text)
+def obtener_iata_con_gemini(origen):
+    prompt = f"Dame solo el código IATA del aeropuerto más cercano a {origen} en España."
+    response = client.models.generate_content(
+        model="gemini-2.0-flash", contents=prompt,
+    )
+    # Extrae el IATA del texto de respuesta
+    iata = response.text.strip().split()[0]  # Ajusta según el formato de respuesta
+    return iata

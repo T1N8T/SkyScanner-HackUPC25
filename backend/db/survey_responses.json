@@ -5,36 +5,11 @@
       {
         "user_id": "u1",
         "nombre": "Pau",
-        "interes": "comida",
-        "presupuesto": "50",
-        "seguridadmuj": "si"
-      },
-      {
-        "user_id": "u2",
-        "nombre": "David",
-        "interes": "playa",
-        "presupuesto": "100",
-        "seguridadmuj": "no"
-      }
-    ]
-  },
-  {
-    "trip_id": "otro_viaje",
-    "respuestas": [
-      {
-        "user_id": "u3",
-        "nombre": "Ana",
-        "interes": "cultura",
-        "presupuesto": "200",
-        "seguridadmuj": "si"
-      },
-      {
-        "user_id": "u4",
-        "nombre": "Luis",
-        "interes": "aventura",
-        "presupuesto": "150",
-        "seguridadmuj": "no"
+        "origen": "Logroño",
+        "presupuestomax": "50",
+        "fechaInicio": "si"
       }
     ]
   }
+  
 ]
