@@ -16,6 +16,8 @@ export default function MultiPageSurveyForm() {
   });
   const [currentPage, setCurrentPage] = useState(0); // Controla la página actual
   const [enviado, setEnviado] = useState(false);
+  const [tripId, setTripId] = useState(null);
+
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -45,10 +47,6 @@ export default function MultiPageSurveyForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-    // Mostrar el JSON en la consola
-    console.log("Datos del formulario:", form);
-  
-    // Enviar el JSON al servidor
     const response = await fetch("http://localhost:5000/api/submit-survey", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -57,8 +55,8 @@ export default function MultiPageSurveyForm() {
   
     if (response.ok) {
       const data = await response.json();
-      console.log("Respuesta del servidor:", data);
-      setEnviado(true); // Cambiar el estado para mostrar el mensaje de agradecimiento
+      setTripId(data.trip_id); // <-- Añade esta línea
+      setEnviado(true);
     } else {
       console.error("Error al enviar el formulario");
     }
@@ -71,7 +69,11 @@ export default function MultiPageSurveyForm() {
     return (
       <div>
         <p>¡Gracias por responder!</p>
-        <pre>{JSON.stringify(form, null, 2)}</pre> {/* Mostrar el JSON */}
+        {tripId && (
+          <p>
+            Tu código de viaje es: <strong>{tripId}</strong>
+          </p>
+        )}
       </div>
     );
   }
