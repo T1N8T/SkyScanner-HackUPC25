@@ -6,15 +6,13 @@ export default function MultiPageSurveyForm() {
     interes: [], // Definido como un array
     presupuestomax: "",
     presupuestoImportancia: "",
-    origen: "",
+    provincia: "",
     seguridadLGTB: "",
     seguridadmuj: "",
     fechaInicio: "",
     fechaFinal: "",
     internet: "",
-    alojamiento: "",
-    leyes: "",
-    seguirdad: "",
+    idiomas: "",
     preferencia: "",
   });
   const [currentPage, setCurrentPage] = useState(0); // Controla la página actual
@@ -46,19 +44,36 @@ export default function MultiPageSurveyForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await fetch("http://localhost:5000/api/submit-survey", {
+  
+    // Mostrar el JSON en la consola
+    console.log("Datos del formulario:", form);
+  
+    // Enviar el JSON al servidor
+    const response = await fetch("http://localhost:5000/api/submit-survey", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
     });
-    setEnviado(true);
+  
+    if (response.ok) {
+      const data = await response.json();
+      console.log("Respuesta del servidor:", data);
+      setEnviado(true); // Cambiar el estado para mostrar el mensaje de agradecimiento
+    } else {
+      console.error("Error al enviar el formulario");
+    }
   };
 
   const nextPage = () => setCurrentPage((prev) => prev + 1);
   const prevPage = () => setCurrentPage((prev) => prev - 1);
 
   if (enviado) {
-    return <p>¡Gracias por responder!</p>;
+    return (
+      <div>
+        <p>¡Gracias por responder!</p>
+        <pre>{JSON.stringify(form, null, 2)}</pre> {/* Mostrar el JSON */}
+      </div>
+    );
   }
 
   return (
@@ -71,6 +86,9 @@ export default function MultiPageSurveyForm() {
               name="nombre"
               value={form.nombre}
               onChange={handleChange}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") e.preventDefault();
+              }}
               required
             />
           </label>
@@ -100,8 +118,8 @@ export default function MultiPageSurveyForm() {
               <input
                 type="checkbox"
                 name="interes"
-                value="Playa"
-                checked={form.interes.includes("Playa")}
+                value="playa"
+                checked={form.interes.includes("playa")}
                 onChange={handleCheckboxChange}
               />
               Playa
@@ -111,8 +129,8 @@ export default function MultiPageSurveyForm() {
               <input
                 type="checkbox"
                 name="interes"
-                value="Arte"
-                checked={form.interes.includes("Arte")}
+                value="arte"
+                checked={form.interes.includes("arte")}
                 onChange={handleCheckboxChange}
               />
               Arte y cultura
@@ -189,8 +207,8 @@ export default function MultiPageSurveyForm() {
           <label>
             ¿Cuál es tu lugar de origen?:
             <input
-              name="origen"
-              value={form.origen}
+              name="provincia"
+              value={form.provincia}
               onChange={handleChange}
               required
             />
@@ -333,141 +351,96 @@ export default function MultiPageSurveyForm() {
       </div>
     )}
       {currentPage === 7 && (
-        <div>
-          <label>
-            Pregunta 8 (Texto por defecto):
-            <input
-              name="pregunta8"
-              value={form.pregunta8}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <br />
-          <button type="button" onClick={prevPage}>
-            Anterior
-          </button>
-          <button type="button" onClick={nextPage}>
-            Siguiente
-          </button>
-        </div>
-      )}
+  <div>
+    <label>¿Qué tan importante es la calidad del WiFi en el destino? (elige una opción)</label>
+    <div>
+      <label>
+        <input
+          type="radio"
+          name="internet"
+          value="si"
+          checked={form.internet === "si"}
+          onChange={handleChange}
+        />
+        Muy importante
+      </label>
+      <br />
+      <label>
+        <input
+          type="radio"
+          name="internet"
+          value="indiferente"
+          checked={form.internet === "indiferente"}
+          onChange={handleChange}
+        />
+        Poco importante
+      </label>
+      <br />
+      <label>
+        <input
+          type="radio"
+          name="internet"
+          value="no"
+          checked={form.internet === "no"}
+          onChange={handleChange}
+        />
+        No importante
+      </label>
+    </div>
+    <br />
+    <button type="button" onClick={prevPage}>
+      Anterior
+    </button>
+    <button type="button" onClick={nextPage}>
+      Siguiente
+    </button>
+  </div>
+)}
       {currentPage === 8 && (
-        <div>
-          <label>
-            Pregunta 9 (Texto por defecto):
-            <input
-              name="pregunta9"
-              value={form.pregunta9}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <br />
-          <button type="button" onClick={prevPage}>
-            Anterior
-          </button>
-          <button type="button" onClick={nextPage}>
-            Siguiente
-          </button>
-        </div>
-      )}
+  <div>
+    <label>
+      ¿En qué idiomas te defiendes?:
+      <input
+        name="idiomas"
+        type="text"
+        value={form.idiomas}
+        onChange={handleChange}
+        required
+        onKeyDown={(e) => {
+          if (e.key === "Enter") e.preventDefault();
+        }}
+      />
+    </label>
+    <br />
+    <button type="button" onClick={prevPage}>
+      Anterior
+    </button>
+    <button type="button" onClick={nextPage}>
+      Siguiente
+    </button>
+  </div>
+)}
        {currentPage === 9 && (
-        <div>
-          <label>
-            Pregunta 10 (Texto por defecto):
-            <input
-              name="pregunta10"
-              value={form.pregunta10}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <br />
-          <button type="button" onClick={prevPage}>
-            Anterior
-          </button>
-          <button type="button" onClick={nextPage}>
-            Siguiente
-          </button>
-        </div>
-      )}
-      {currentPage === 10 && (
-        <div>
-          <label>
-            Pregunta 11 (Texto por defecto):
-            <input
-              name="pregunta11"
-              value={form.pregunta11}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <br />
-          <button type="button" onClick={prevPage}>
-            Anterior
-          </button>
-          <button type="button" onClick={nextPage}>
-            Siguiente
-          </button>
-        </div>
-      )}
-      {currentPage === 11 && (
-        <div>
-          <label>
-            Pregunta 12 (Texto por defecto):
-            <input
-              name="pregunta12"
-              value={form.pregunta12}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <br />
-          <button type="button" onClick={prevPage}>
-            Anterior
-          </button>
-          <button type="button" onClick={nextPage}>
-            Siguiente
-          </button>
-        </div>
-      )}
-      {currentPage === 12 && (
-        <div>
-          <label>
-            Pr (Texto por defecto):
-            <input
-              name="pregunta13"
-              value={form.pregunta13}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <br />
-          <button type="button" onClick={prevPage}>
-            Anterior
-          </button>
-          <button type="submit">Enviar</button>
-        </div>
-      )}
-      {currentPage === 13 && (
-        <div>
-          <label>
-            Pr (Texto por defecto):
-            <input
-              name="pregunta14"
-              value={form.pregunta14}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <br />
-          <button type="button" onClick={prevPage}>
-            Anterior
-          </button>
-          <button type="submit">Enviar</button>
-        </div>
-      )}
+  <div>
+    <label>
+      ¿Tienes alguna preferencia que no se haya mencionado previamente?:
+      <textarea
+        name="preferencia"
+        value={form.preferencia}
+        onChange={handleChange}
+        placeholder="Escribe aquí tus preferencias adicionales"
+        required
+      />
+    </label>
+    <br />
+    <button type="button" onClick={prevPage}>
+      Anterior
+    </button>
+    <button type="submit" >
+      Enviar
+    </button>
+  </div>
+)}
     </form>
   );
 }

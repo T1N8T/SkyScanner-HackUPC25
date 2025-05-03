@@ -5,7 +5,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from skyscanner_api import crear_busqueda, obtener_resultados
 from datetime import datetime
-from procesado import procesar_resultados
+# from procesado import procesar_resultados
 
 app = Flask(__name__)
 CORS(app)
