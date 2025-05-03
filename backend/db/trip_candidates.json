@@ -5168,5 +5168,21 @@
       "SVN",
       "SAV"
     ]
+  },
+  {
+    "trip_id": "trip_20250503232017878563",
+    "iatas": [
+      "AMS",
+      "KRK",
+      "CPT",
+      "SPU",
+      "MAO",
+      "UIO",
+      "BOG",
+      "CTG",
+      "SMR",
+      "KTM",
+      "CNX"
+    ]
   }
 ]

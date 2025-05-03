@@ -436,5 +436,45 @@
         "trip_id": "trip_20250503231520839325"
       }
     ]
+  },
+  {
+    "trip_id": "trip_20250503232017878563",
+    "num_miembros": 2,
+    "respuestas": [
+      {
+        "nombre": "Adri",
+        "interes": [
+          "nocturno",
+          "aventuras"
+        ],
+        "presupuestomax": "75",
+        "presupuestoImportancia": "2",
+        "origen": "gandia",
+        "seguridadLGTB": "indiferente",
+        "seguridadmuj": "no",
+        "fechaInicio": "2025-05-13",
+        "internet": "si",
+        "idiomas": "bulgaro y aleman",
+        "preferencia": "me gusta disfrutar de un buen clima",
+        "trip_id": "trip_20250503232017878563"
+      },
+      {
+        "nombre": "juanma",
+        "interes": [
+          "aventuras",
+          "arte"
+        ],
+        "presupuestomax": "300",
+        "presupuestoImportancia": "4",
+        "origen": "Villarrobledo",
+        "seguridadLGTB": "si",
+        "seguridadmuj": "si",
+        "fechaInicio": "2025-06-09",
+        "internet": "indiferente",
+        "idiomas": "Español e inglés",
+        "preferencia": "No gracias",
+        "trip_id": "trip_20250503232017878563"
+      }
+    ]
   }
 ]

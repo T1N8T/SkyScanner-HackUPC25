@@ -37,18 +37,18 @@ def obtener_prompt_recomendacion(trip_id):
         idiomas_str = "\n".join(idiomas) if idiomas else "No hay información de idiomas."
 
     prompt = (
-        "Eres un experto en viajes y turismo. Tu tarea es recomendar un destino de viaje basado en las preferencias de un grupo de usuarios.\n"
-        "Hemos preseleccionado varios aeropuertos según las respuestas de los usuarios. "
-        "Elige obligatoriamente tres destinos recomendados de entre esta lista, teniendo en cuenta los intereses y preferencias del usuario, debes tener en cuenta las preferencias de todos los usuarios.\n"
-        "Lista de destinos (códigos IATA): "
-        f"{destinos_str}\n"
-        "Ademas añadimos otro datos a tener en cuenta para la elección como Preferencias personales de los usuarios:\n"
-        f"{preferencias_str}\n"
-        "Idiomas de los usuarios:\n"
-        f"{idiomas_str}\n"
-        "Escribe una breve justificación que explique por qué has elegido esos destinos. "
-        "En la respuesta utiliza el nombre de la ciudad, nunca el nombre del aeropuerto ni el código IATA."
-    )
+    "Actúa como un experto en viajes y turismo. Tu tarea es recomendar exactamente tres destinos, "
+    "elegidos únicamente de entre los siguientes aeropuertos preseleccionados (códigos IATA):\n"
+    f"{destinos_str}\n\n"
+    "Basándote en las siguientes preferencias agregadas de los usuarios:\n"
+    f"{preferencias_str}\n\n"
+    "Y en los idiomas que hablan los usuarios:\n"
+    f"{idiomas_str}\n\n"
+    "Selecciona los tres destinos que mejor se ajusten al conjunto de intereses y preferencias del grupo. "
+    "Justifica brevemente tu elección en un tono objetivo y profesional. "
+    "Utiliza el nombre de la ciudad (no el aeropuerto ni el código IATA) en la respuesta. Sé claro y conciso."
+)
+
 
     return {
         "prompt": prompt
