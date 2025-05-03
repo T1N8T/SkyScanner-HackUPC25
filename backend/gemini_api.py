@@ -2,6 +2,7 @@ from google import genai
 from dotenv import load_dotenv
 from prompts import *
 import os
+import pandas as pd
 
 # Cargar variables de entorno desde el archivo .env
 load_dotenv()
@@ -15,7 +16,7 @@ client = genai.Client(api_key=api_key)
 def obtener_iatas_con_gemini(origen):
     prompt = (
         f"Dame solo una lista separada por comas de los códigos IATA de todos los aeropuertos "
-        f"de la ciudad de {origen} (puede haber más de uno, por ejemplo en Londres). "
+        f"de la ciudad de {origen} en caso de no haber aeropuerto considerar la ciudad con aeropuerto con vuelos comerciales y todos sus iatas (puede haber más de uno, por ejemplo en Londres). "
         f"Devuélveme solo los códigos IATA, sin explicaciones."
     )
     response = client.models.generate_content(
@@ -26,6 +27,9 @@ def obtener_iatas_con_gemini(origen):
     # Quitar posibles palabras y dejar solo los códigos
     # Ejemplo de respuesta: "LHR, LGW, LCY, STN, LTN"
     iatas = [iata.strip().upper() for iata in texto.replace('\n', ',').split(',') if iata.strip()]
+    # Filtrar solo los válidos
+    iatas_validos = set(pd.read_csv("data/skyscanner.csv")["IATA"].dropna().unique())
+    iatas = [iata for iata in iatas if iata in iatas_validos]
     return iatas
 
 def obtener_recomendacion_gemini(trip_id):

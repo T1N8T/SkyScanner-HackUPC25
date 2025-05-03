@@ -110,6 +110,10 @@ def descartar_paises(trip_id):
             iatas_con_interes = skyscanner_filtrado[skyscanner_filtrado.apply(tiene_vibe, axis=1)]["IATA"].tolist()
             iatas = [iata for iata in iatas if iata in iatas_con_interes]
 
+    # --- FILTRO IATAS VÁLIDOS ---
+    iatas_validos = set(skyscanner_df["IATA"].dropna().unique())
+    iatas = [iata for iata in iatas if iata in iatas_validos]
+
     # --- GUARDAR SOLO ID Y IATAS EN trip_candidates.json ---
     try:
         with open("db/trip_candidates.json", "r", encoding="utf-8") as f:
@@ -128,20 +132,73 @@ def descartar_paises(trip_id):
 
     return iatas
 
-def media_ponderada_presupuesto(trip_id):
-    with open("db/survey_responses.json", "r", encoding="utf-8") as f:
-        data = json.load(f)
-    viaje = next((v for v in data if v["trip_id"] == trip_id), None)
-    if not viaje:
-        return None
-    suma = 0
-    suma_pesos = 0
-    for r in viaje["respuestas"]:
+def buscar_vuelos_presupuesto(trip_id):
+    # Cargar datos de clientes (personas del viaje)
+    clientes = extraer_datos_clientes(trip_id)
+    if not clientes:
+        return []
+
+    # Cargar destinos candidatos
+    with open("db/trip_candidates.json", "r", encoding="utf-8") as f:
+        trip_candidates = json.load(f)
+    candidato = next((c for c in trip_candidates if c["trip_id"] == trip_id), None)
+    if not candidato or not candidato["iatas"]:
+        return []
+    destinos = candidato["iatas"]
+
+    resultados = []
+    destinos_con_vuelo = set()
+
+    for cliente in clientes:
+        # Puede haber varios orígenes por persona (ej: ["LHR", "LGW"])
+        origenes = cliente["iata"]
+        if isinstance(origenes, str):
+            origenes = [origenes]
+        fecha = cliente.get("fechaInicio")
         try:
-            p = float(r.get("presupuestomax", 0))
-            peso = float(r.get("presupuestoImportancia", 1))
-            suma += p * peso
-            suma_pesos += peso
+            presupuesto = float(cliente.get("presupuestomax", 0))
+            importanciaPresupuesto = float(cliente.get("presupuestoImportancia", 0))
+            presupuesto = presupuesto + presupuesto*1/(2*importanciaPresupuesto)
         except Exception:
+            presupuesto = 0
+        if not fecha or not origenes or presupuesto == 0:
             continue
-    return suma / suma_pesos if suma_pesos else 0
+        try:
+            año, mes, dia = map(int, fecha.split("-"))
+        except Exception:
+            continue  # Fecha inválida
+
+        for origen in origenes:
+            for destino in destinos:
+                print(f"Probando origen: {origen}, destino: {destino}")
+                try:
+                    session_token = crear_busqueda(origen, destino, año, mes, dia)
+                    data = obtener_resultados(session_token)
+                    itineraries = data["content"]["results"]["itineraries"]
+                    for it_id, it in itineraries.items():
+                        for option in it.get("pricingOptions", []):
+                            price = option.get("price", {}).get("amount", float("inf"))
+                            try:
+                                price = float(price) / 1000  # O solo float(price) si ya está en euros
+                            except Exception:
+                                continue
+                            if price <= presupuesto:
+                                resultados.append({
+                                    "origen": origen,
+                                    "destino": destino,
+                                    "precio": price,
+                                    "itineraryId": it_id,
+                                    "cliente": cliente.get("nombre", "")
+                                })
+                                destinos_con_vuelo.add(destino)
+                except Exception as e:
+                    print(f"Error buscando vuelo {origen}->{destino}: {e}")
+
+    # Actualizar trip_candidates.json con los destinos que tienen vuelo dentro del presupuesto de al menos una persona
+    for c in trip_candidates:
+        if c["trip_id"] == trip_id:
+            c["iatas"] = list(destinos_con_vuelo)
+    with open("db/trip_candidates.json", "w", encoding="utf-8") as f:
+        json.dump(trip_candidates, f, ensure_ascii=False, indent=2)
+
+    return resultados
