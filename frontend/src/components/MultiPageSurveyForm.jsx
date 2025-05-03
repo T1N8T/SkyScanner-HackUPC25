@@ -20,7 +20,9 @@ export default function MultiPageSurveyForm() {
   const [mostrarResultados, setMostrarResultados] = useState(false);
   const [recomendacion, setRecomendacion] = useState(null);
   const [cargando, setCargando] = useState(false);
-
+  const [numMiembros, setNumMiembros] = useState(2);
+  const [modo, setModo] = useState(null); // "crear" o "unir"
+  const [inputTripId, setInputTripId] = useState("");
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -28,7 +30,6 @@ export default function MultiPageSurveyForm() {
 
   const handleCheckboxChange = (e) => {
     const { value, checked } = e.target;
-
 
     if (checked) {
       if (form.interes.length < 2) {
@@ -49,11 +50,10 @@ export default function MultiPageSurveyForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
     const response = await fetch("http://localhost:5000/api/submit-survey", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
+      body: JSON.stringify({ ...form, trip_id: tripId }),
     });
   
     if (response.ok) {
@@ -71,27 +71,108 @@ export default function MultiPageSurveyForm() {
   const mostrarRecomendacion = async () => {
     setCargando(true);
     try {
-      // Primero procesar los datos
-      await fetch("http://localhost:5000/api/procesar", {
+      // Procesar datos
+      const resp = await fetch("http://localhost:5000/api/procesar", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ trip_id: tripId }),
       });
-
+      const data = await resp.json();
+      if (data.status === "wait") {
+        setRecomendacion(data.message); // Muestra mensaje de espera
+        setCargando(false);
+        setMostrarResultados(true);
+        return;
+      }
       // Luego pedir la recomendación
       const response = await fetch("http://localhost:5000/api/recomendacion", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ trip_id: tripId }),
       });
-      const data = await response.json();
-      setRecomendacion(data.recomendacion);
+      const data2 = await response.json();
+      setRecomendacion(data2.recomendacion);
     } catch (error) {
       setRecomendacion("Error al obtener la recomendación.");
     }
     setCargando(false);
     setMostrarResultados(true);
   };
+
+  const crearGrupo = async () => {
+    const resp = await fetch("http://localhost:5000/api/crear-grupo", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ num_miembros: numMiembros }),
+    });
+    const data = await resp.json();
+    setTripId(data.trip_id);
+  };
+
+  if (!modo) {
+    return (
+      <div>
+        <h2>¿Qué quieres hacer?</h2>
+        <button onClick={() => setModo("crear")}>Crear grupo nuevo</button>
+        <button onClick={() => setModo("unir")}>Unirme a un grupo existente</button>
+      </div>
+    );
+  }
+
+  if (modo === "unir" && !tripId) {
+    return (
+      <div>
+        <h2>Introduce el código de tu grupo</h2>
+        <input
+          type="text"
+          value={inputTripId}
+          onChange={e => setInputTripId(e.target.value)}
+          placeholder="Código de grupo"
+        />
+        <button
+          onClick={() => {
+            setTripId(inputTripId.trim());
+          }}
+          disabled={!inputTripId.trim()}
+        >
+          Unirme
+        </button>
+        <button onClick={() => setModo(null)}>Volver</button>
+      </div>
+    );
+  }
+
+  if (modo === "crear" && !tripId) {
+    return (
+      <div>
+        <h2>Crear grupo nuevo</h2>
+        <label>
+          Número de miembros:
+          <input
+            type="number"
+            min={1}
+            value={numMiembros}
+            onChange={e => setNumMiembros(Number(e.target.value))}
+          />
+        </label>
+        <br />
+        <button
+          onClick={async () => {
+            const resp = await fetch("http://localhost:5000/api/crear-grupo", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ num_miembros: numMiembros }),
+            });
+            const data = await resp.json();
+            setTripId(data.trip_id);
+          }}
+        >
+          Crear grupo
+        </button>
+        <button onClick={() => setModo(null)}>Volver</button>
+      </div>
+    );
+  }
 
   if (enviado && !mostrarResultados) {
     return (

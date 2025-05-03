@@ -369,5 +369,72 @@
         "preferencia": "No me gustan los panchitos"
       }
     ]
+  },
+  {
+    "trip_id": "trip_20250503231157743650",
+    "num_miembros": 1,
+    "respuestas": [
+      {}
+    ]
+  },
+  {
+    "trip_id": "trip_20250503231219743311",
+    "num_miembros": 1,
+    "respuestas": [
+      {},
+      {
+        "nombre": "",
+        "interes": [],
+        "presupuestomax": "",
+        "presupuestoImportancia": "",
+        "origen": "",
+        "seguridadLGTB": "",
+        "seguridadmuj": "",
+        "fechaInicio": "",
+        "internet": "",
+        "idiomas": "",
+        "preferencia": "xxv",
+        "trip_id": "trip_20250503231219743311"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip_20250503231520839325",
+    "num_miembros": 2,
+    "respuestas": [
+      {
+        "nombre": "Manu",
+        "interes": [
+          "arte"
+        ],
+        "presupuestomax": "",
+        "presupuestoImportancia": "",
+        "origen": "",
+        "seguridadLGTB": "si",
+        "seguridadmuj": "no",
+        "fechaInicio": "",
+        "internet": "indiferente",
+        "idiomas": "español",
+        "preferencia": "quiero no viajar a españa",
+        "trip_id": "trip_20250503231520839325"
+      },
+      {
+        "nombre": "Julia",
+        "interes": [
+          "playa",
+          "arte"
+        ],
+        "presupuestomax": "",
+        "presupuestoImportancia": "",
+        "origen": "",
+        "seguridadLGTB": "indiferente",
+        "seguridadmuj": "si",
+        "fechaInicio": "",
+        "internet": "no",
+        "idiomas": "aleman,ingles",
+        "preferencia": "me gusta el futbol",
+        "trip_id": "trip_20250503231520839325"
+      }
+    ]
   }
 ]
