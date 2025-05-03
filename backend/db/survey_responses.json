@@ -258,5 +258,90 @@
     "trip_id": "trip_20250504000135242523",
     "num_miembros": 3,
     "respuestas": []
+  },
+  {
+    "trip_id": "trip_20250504000729878004",
+    "num_miembros": 2,
+    "respuestas": []
+  },
+  {
+    "trip_id": "trip_20250504001051905147",
+    "num_miembros": 2,
+    "respuestas": []
+  },
+  {
+    "trip_id": "trip_20250504002311223272",
+    "num_miembros": 2,
+    "respuestas": []
+  },
+  {
+    "trip_id": "trip_20250504002857465463",
+    "num_miembros": 2,
+    "respuestas": [
+      {
+        "nombre": "pipi",
+        "interes": [
+          "playa",
+          "arte"
+        ],
+        "presupuestomax": "1",
+        "presupuestoImportancia": "1",
+        "origen": "albacete",
+        "seguridadLGTB": "no",
+        "seguridadmuj": "si",
+        "fechaInicio": "2025-09-09",
+        "internet": "no",
+        "idiomas": "español, ingles",
+        "preferencia": "ninguna",
+        "trip_id": "trip_20250504002857465463"
+      },
+      {
+        "nombre": "caca",
+        "interes": [
+          "playa",
+          "arte"
+        ],
+        "presupuestomax": "200",
+        "presupuestoImportancia": "2",
+        "origen": "bruselas",
+        "seguridadLGTB": "no",
+        "seguridadmuj": "no",
+        "fechaInicio": "2026-09-09",
+        "internet": "no",
+        "idiomas": "ingles, español",
+        "preferencia": "ninguna",
+        "trip_id": "trip_20250504002857465463"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip_20250504003805982619",
+    "num_miembros": 0,
+    "respuestas": [
+      {
+        "nombre": "s",
+        "interes": [],
+        "presupuestomax": "",
+        "presupuestoImportancia": "",
+        "origen": "",
+        "seguridadLGTB": "",
+        "seguridadmuj": "",
+        "fechaInicio": "",
+        "internet": "",
+        "idiomas": "",
+        "preferencia": "ninguna",
+        "trip_id": "trip_20250504003805982619"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip_20250504004656371841",
+    "num_miembros": 1,
+    "respuestas": []
+  },
+  {
+    "trip_id": "trip_20250504004933991144",
+    "num_miembros": 1,
+    "respuestas": []
   }
 ]

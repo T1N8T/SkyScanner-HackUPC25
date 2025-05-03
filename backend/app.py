@@ -37,6 +37,10 @@ def submit_survey():
             "respuestas": [datos]
         })
 
+    with open(ruta_json, "w", encoding="utf-8") as f:
+        json.dump(respuestas, f, ensure_ascii=False, indent=2)
+    return jsonify({"status": "success", "message": "Formulario recibido", "trip_id": trip_id})
+
 def buscar_vuelos_presupuesto(trip_id):
     presupuesto = media_ponderada_presupuesto(trip_id)
     if presupuesto == 0:
@@ -90,10 +94,6 @@ def buscar_vuelos_presupuesto(trip_id):
         json.dump(trip_candidates, f, ensure_ascii=False, indent=2)
 
     return resultados
-
-    with open(ruta_json, "w", encoding="utf-8") as f:
-        json.dump(respuestas, f, ensure_ascii=False, indent=2)
-    return jsonify({"status": "success", "message": "Formulario recibido", "trip_id": trip_id})
 
 @app.route("/buscar_vuelo", methods=["POST"])
 def buscar_vuelo():
