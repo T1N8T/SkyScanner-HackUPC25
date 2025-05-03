@@ -13,8 +13,29 @@ CORS(app)
 @app.route("/api/submit-survey", methods=["POST"])
 def submit_survey():
     datos = request.json
-    #print("Datos del formulario recibidos:", datos)
-    return jsonify({"status": "success", "message": "Formulario recibido"})
+
+    # Cargar las respuestas existentes
+    ruta_json = os.path.join("db", "survey_responses.json")
+    if os.path.exists(ruta_json):
+        with open(ruta_json, "r", encoding="utf-8") as f:
+            respuestas = json.load(f)
+    else:
+        respuestas = []
+
+    # Puedes generar un trip_id único, por ejemplo usando la fecha y hora
+    trip_id = f"trip_{datetime.now().strftime('%Y%m%d%H%M%S%f')}"
+
+    # Añadir la nueva respuesta
+    respuestas.append({
+        "trip_id": trip_id,
+        "respuestas": [datos]
+    })
+
+    # Guardar el JSON actualizado
+    with open(ruta_json, "w", encoding="utf-8") as f:
+        json.dump(respuestas, f, ensure_ascii=False, indent=2)
+
+    return jsonify({"status": "success", "message": "Formulario recibido", "trip_id": trip_id})
 
 @app.route("/buscar_vuelo", methods=["POST"])
 def buscar_vuelo():

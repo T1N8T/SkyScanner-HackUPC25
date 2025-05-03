@@ -52,5 +52,25 @@
         "internet": "si"
       }
     ]
+  },
+  {
+    "trip_id": "trip_20250503191905600504",
+    "respuestas": [
+      {
+        "nombre": "asdf",
+        "interes": [
+          "arte"
+        ],
+        "presupuestomax": "12",
+        "presupuestoImportancia": "33",
+        "origen": "",
+        "seguridadLGTB": "",
+        "seguridadmuj": "",
+        "fechaInicio": "",
+        "internet": "",
+        "idiomas": "",
+        "preferencia": "asdf"
+      }
+    ]
   }
 ]
