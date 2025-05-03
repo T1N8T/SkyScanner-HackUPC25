@@ -18,6 +18,8 @@ export default function MultiPageSurveyForm() {
   const [enviado, setEnviado] = useState(false);
   const [tripId, setTripId] = useState(null);
   const [mostrarResultados, setMostrarResultados] = useState(false);
+  const [recomendacion, setRecomendacion] = useState(null);
+  const [cargando, setCargando] = useState(false);
 
 
   const handleChange = (e) => {
@@ -66,7 +68,23 @@ export default function MultiPageSurveyForm() {
   const nextPage = () => setCurrentPage((prev) => prev + 1);
   const prevPage = () => setCurrentPage((prev) => prev - 1);
 
-  
+  const mostrarRecomendacion = async () => {
+    setCargando(true);
+    try {
+      const response = await fetch("http://localhost:5000/api/recomendacion", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ trip_id: tripId }),
+      });
+      const data = await response.json();
+      setRecomendacion(data.recomendacion);
+    } catch (error) {
+      setRecomendacion("Error al obtener la recomendación.");
+    }
+    setCargando(false);
+    setMostrarResultados(true);
+  };
+
   if (enviado && !mostrarResultados) {
     return (
       <div>
@@ -76,8 +94,8 @@ export default function MultiPageSurveyForm() {
             Tu código de viaje es: <strong>{tripId}</strong>
           </p>
         )}
-        <button onClick={() => setMostrarResultados(true)}>
-          Ver mis resultados
+        <button onClick={mostrarRecomendacion}>
+          Ver mi recomendación
         </button>
       </div>
     );
@@ -85,26 +103,17 @@ export default function MultiPageSurveyForm() {
   if (enviado && mostrarResultados) {
     return (
       <div>
-        <h2>¡Estos son tus resultados!</h2>
-        <ul>
-          <li><strong>Nombre:</strong> {form.nombre}</li>
-          <li><strong>Intereses:</strong> {form.interes.join(", ")}</li>
-          <li><strong>Presupuesto máximo:</strong> {form.presupuestomax} €</li>
-          <li><strong>Importancia del presupuesto:</strong> {form.presupuestoImportancia}</li>
-          <li><strong>Origen:</strong> {form.origen}</li>
-          <li><strong>Seguridad mujeres:</strong> {form.seguridadmuj}</li>
-          <li><strong>Seguridad LGTB:</strong> {form.seguridadLGTB}</li>
-          <li><strong>Fecha inicio:</strong> {form.fechaInicio}</li>
-          <li><strong>Internet:</strong> {form.internet}</li>
-          <li><strong>Idiomas:</strong> {form.idiomas}</li>
-          <li><strong>Preferencias adicionales:</strong> {form.preferencia}</li>
-        </ul>
-        <button onClick={() => window.location.reload()}>Volver a empezar</button>
+        <h2>Recomendación personalizada</h2>
+        {cargando && <p>Cargando recomendación...</p>}
+        {!cargando && (
+          <div>
+            <p>{recomendacion}</p>
+            <button onClick={() => window.location.reload()}>Volver a empezar</button>
+          </div>
+        )}
       </div>
     );
   }
-
-  // ...tu return principal del formulario...
 
   return (
     <form onSubmit={handleSubmit}>
