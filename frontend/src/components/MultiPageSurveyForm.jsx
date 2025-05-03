@@ -6,11 +6,10 @@ export default function MultiPageSurveyForm() {
     interes: [], // Definido como un array
     presupuestomax: "",
     presupuestoImportancia: "",
-    provincia: "",
+    origen: "",
     seguridadLGTB: "",
     seguridadmuj: "",
     fechaInicio: "",
-    fechaFinal: "",
     internet: "",
     idiomas: "",
     preferencia: "",
@@ -25,14 +24,15 @@ export default function MultiPageSurveyForm() {
   const handleCheckboxChange = (e) => {
     const { value, checked } = e.target;
 
+
     if (checked) {
-      if (form.interes.length < 3) {
+      if (form.interes.length < 2) {
         setForm((prevForm) => ({
           ...prevForm,
           interes: [...prevForm.interes, value],
         }));
       } else {
-        alert("Solo puedes seleccionar hasta 3 opciones.");
+        alert("Solo puedes seleccionar hasta 2 opciones.");
       }
     } else {
       setForm((prevForm) => ({
@@ -101,7 +101,7 @@ export default function MultiPageSurveyForm() {
 
       {currentPage === 1 && (
         <div>
-          <label>¿Qué tipo de experiencias buscas principalmente en un viaje? (elige hasta 3)</label>
+          <label>¿Qué tipo de experiencias buscas principalmente en un viaje? (elige hasta 2)</label>
           <div>
             <label>
               <input
@@ -207,10 +207,13 @@ export default function MultiPageSurveyForm() {
           <label>
             ¿Cuál es tu lugar de origen?:
             <input
-              name="provincia"
-              value={form.provincia}
+              name="origen"
+              value={form.origen}
               onChange={handleChange}
               required
+              onKeyDown={(e) => {
+                if (e.key === "Enter") e.preventDefault();
+              }}
             />
           </label>
           <br />
@@ -326,17 +329,6 @@ export default function MultiPageSurveyForm() {
             name="fechaInicio"
             type="date"
             value={form.fechaInicio}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <br />
-        <label>
-          Fecha final:
-          <input
-            name="fechaFinal"
-            type="date"
-            value={form.fechaFinal}
             onChange={handleChange}
             required
           />
