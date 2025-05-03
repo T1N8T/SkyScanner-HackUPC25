@@ -1,5 +1,6 @@
 import json
 import pandas as pd
+import ast
 
 def descartar_paises(trip_id):
     with open("db/survey_responses.json", "r", encoding="utf-8") as f:
@@ -17,7 +18,7 @@ def descartar_paises(trip_id):
 
     skyscanner_df = pd.read_csv("data/skyscanner.csv")
 
-    viaje = next((v for v in viajes if v["trip_id"] == trip_id), None)
+    viaje = next((v for v in viajes if v.get("trip_id") == trip_id), None)
     if viaje is None:
         return None
     
@@ -73,6 +74,38 @@ def descartar_paises(trip_id):
     iata_df = pd.read_csv("data/IATACountry.csv")
     iatas = iata_df[iata_df["Country"].isin(paises_filtrados)]["IATA"].tolist()
 
+    # --- FILTRO INTERESES DINÁMICO ---
+    intereses = {
+        "playa": "beach",
+        "nocturno": "nightlife_and_entertainment",
+        "arte": "art_and_culture",
+        "comida": "great_food",
+        "aventuras": "outdoor_adventures"
+    }
+    total_respuestas = len(respuestas)
+
+    for interes, columna in intereses.items():
+        count = sum(
+            interes in r.get("interes", []) if isinstance(r.get("interes", []), list) else r.get("interes", "") == interes
+            for r in respuestas
+        )
+        ratio = count / total_respuestas if total_respuestas else 0
+
+        if ratio > 0:  # Aplica el filtro si al menos un usuario lo selecciona
+            def tiene_vibe(row):
+                vibes = row.get("vibes") if isinstance(row, dict) else getattr(row, "vibes", None)
+                if pd.isna(vibes) or vibes == "null":
+                    return False
+                try:
+                    vibes_dict = ast.literal_eval(vibes.replace('""', '"'))
+                    valor = vibes_dict.get(columna, "0")
+                    return valor == "1"
+                except Exception:
+                    return False
+
+            iatas_con_interes = skyscanner_df[skyscanner_df.apply(tiene_vibe, axis=1)]["IATA"].tolist()
+            iatas = [iata for iata in iatas if iata in iatas_con_interes]
+
     # --- GUARDAR EN trip_candidates.json ---
     try:
         with open("db/trip_candidates.json", "r", encoding="utf-8") as f:
@@ -80,8 +113,7 @@ def descartar_paises(trip_id):
     except (FileNotFoundError, json.JSONDecodeError):
         trip_candidates = []
 
-    # Elimina si ya existe ese trip_id
-    trip_candidates = [c for c in trip_candidates if c["trip_id"] != trip_id]
+    trip_candidates = [c for c in trip_candidates if c.get("trip_id") != trip_id]
     trip_candidates.append({
         "trip_id": trip_id,
         "countries": paises_filtrados,
@@ -92,7 +124,3 @@ def descartar_paises(trip_id):
         json.dump(trip_candidates, f, ensure_ascii=False, indent=2)
 
     return iatas
-
-
-
-

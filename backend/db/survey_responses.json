@@ -5,7 +5,11 @@
       {
         "user_id": "u1",
         "nombre": "Pau",
-        "interes": "comida",
+        "interes": [
+          "playa",
+          "arte",
+          "aventura"
+        ],
         "presupuesto": "50",
         "seguridadmuj": "si",
         "seguridadLGTB": "si",
@@ -14,7 +18,11 @@
       {
         "user_id": "u2",
         "nombre": "David",
-        "interes": "playa",
+        "interes": [
+          "playa",
+          "arte",
+          "nocturno"
+        ],
         "presupuesto": "100",
         "seguridadmuj": "no",
         "seguridadLGTB": "indiferente",
@@ -28,7 +36,7 @@
       {
         "user_id": "u3",
         "nombre": "Ana",
-        "interes": "cultura",
+        "interes": [],
         "presupuesto": "200",
         "seguridadmuj": "si",
         "seguridadLGTB": "no",
@@ -37,7 +45,7 @@
       {
         "user_id": "u4",
         "nombre": "Luis",
-        "interes": "aventura",
+        "interes": [],
         "presupuesto": "150",
         "seguridadmuj": "indiferente",
         "seguridadLGTB": "si",
