@@ -3,11 +3,20 @@
     "trip_id": "abc123",
     "respuestas": [
       {
-        "user_id": "u1",
-        "nombre": "Pau",
-        "origen": "Logroño",
-        "presupuestomax": "50",
-        "fechaInicio": "si"
+        "nombre": "pepe",
+        "interes": [], 
+        "presupuestomax": "1200",
+        "presupuestoImportancia": "",
+        "origen": "londres",
+        "seguridadLGTB": "",
+        "seguridadmuj": "",
+        "fechaInicio": "14/05/2025",
+        "fechaFinal": "",
+        "internet": "",
+        "alojamiento": "",
+        "leyes": "",
+        "seguirdad": "",
+        "preferencia": ""
       }
     ]
   }

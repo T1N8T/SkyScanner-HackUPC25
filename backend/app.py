@@ -30,7 +30,7 @@ def buscar_vuelo():
         print("Session token:", session_token)
         data = obtener_resultados(session_token)
         print("Datos obtenidos de la API.")
-        with open("respuesta_skyscanner.json", "w", encoding="utf-8") as f:
+        with open("db/respuesta_skyscanner.json", "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
         print("JSON guardado correctamente.")
         return jsonify({"status": "success", "data": data})
