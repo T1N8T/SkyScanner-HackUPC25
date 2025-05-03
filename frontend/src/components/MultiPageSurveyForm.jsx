@@ -6,7 +6,7 @@ export default function MultiPageSurveyForm() {
     interes: [], // Definido como un array
     presupuestomax: "",
     presupuestoImportancia: "",
-    provincia: "",
+    origen: "",
     seguridadLGTB: "",
     seguridadmuj: "",
     fechaInicio: "",
@@ -207,8 +207,8 @@ export default function MultiPageSurveyForm() {
           <label>
             ¿Cuál es tu lugar de origen?:
             <input
-              name="provincia"
-              value={form.provincia}
+              name="origen"
+              value={form.origen}
               onChange={handleChange}
               required
             />
