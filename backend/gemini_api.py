@@ -13,6 +13,6 @@ client = genai.Client(api_key=api_key)
 
 # Generar contenido con el modelo
 response = client.models.generate_content(
-    model="gemini-2.0-flash", contents="Explain how AI works in a few words, not more than 15 words.",
+    model="gemini-2.0-flash", contents="dame lista de los 3 IATA más cercanos a la provincia de albacete",
 )
 print(response.text)
