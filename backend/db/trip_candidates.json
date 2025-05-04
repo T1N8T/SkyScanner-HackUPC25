@@ -99,5 +99,19 @@
       "YHZ",
       "STN"
     ]
+  },
+  {
+    "trip_id": "trip_20250504050444352987",
+    "iatas": [
+      "IBZ",
+      "NCE",
+      "TRG",
+      "SYD",
+      "MIA",
+      "OPF",
+      "PMI",
+      "NTL",
+      "BEO"
+    ]
   }
 ]

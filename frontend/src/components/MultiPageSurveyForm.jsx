@@ -103,6 +103,7 @@ export default function MultiPageSurveyForm() {
 
   const mostrarRecomendacion = async () => {
     setCargando(true);
+    setMostrarResultados(false); // Oculta resultados mientras carga
     try {
       // Procesar datos
       const resp = await fetch("http://localhost:5000/api/procesar", {
@@ -141,6 +142,44 @@ export default function MultiPageSurveyForm() {
     const data = await resp.json();
     setTripId(data.trip_id);
   };
+
+  if (cargando) {
+    return (
+      <div style={{
+        minHeight: "100vh",
+        width: "100vw",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "#f7f7fa"
+      }}>
+        <div style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center"
+        }}>
+          <div className="loader" style={{
+            border: "8px solid #f3f3f3",
+            borderTop: "8px solid #1abc9c",
+            borderRadius: "50%",
+            width: 80,
+            height: 80,
+            animation: "spin 1s linear infinite",
+            marginBottom: 32
+          }} />
+          <h2 style={{ color: "#1abc9c" }}>Generando tu recomendación...</h2>
+        </div>
+        <style>
+          {`
+            @keyframes spin {
+              0% { transform: rotate(0deg);}
+              100% { transform: rotate(360deg);}
+            }
+          `}
+        </style>
+      </div>
+    );
+  }
 
   if (!modo) {
     return (

@@ -282,5 +282,28 @@
         "trip_id": "trip_20250504044352472049"
       }
     ]
+  },
+  {
+    "trip_id": "trip_20250504050444352987",
+    "num_miembros": 1,
+    "respuestas": [
+      {
+        "nombre": "wrtwrt",
+        "interes": [
+          "nocturno",
+          "playa"
+        ],
+        "presupuestomax": "4545",
+        "presupuestoImportancia": "2",
+        "origen": "4545",
+        "seguridadLGTB": "si",
+        "seguridadmuj": "si",
+        "fechaInicio": "2025-05-16",
+        "internet": "si",
+        "idiomas": "4545",
+        "preferencia": "454545",
+        "trip_id": "trip_20250504050444352987"
+      }
+    ]
   }
 ]
