@@ -193,16 +193,61 @@ export default function MultiPageSurveyForm() {
     );
   }
   if (enviado && mostrarResultados) {
+    // Procesar la recomendación de Gemini en 3 tarjetas
+    let tarjetas = [];
+    if (recomendacion) {
+      // Divide el texto en 3 partes usando regex para separar por 1. 2. 3.
+      const partes = recomendacion.split(/\n?\s*\d+\.\s+/).filter(Boolean);
+      tarjetas = partes.slice(0, 3).map((texto, idx) => {
+        // Extrae el nombre de la ciudad entre comillas al principio
+        const match = texto.match(/^"([^"]+)"\.?\s*(.*)$/s);
+        const ciudad = match ? match[1].trim() : `Destino ${idx + 1}`;
+        const explicacion = match ? match[2].trim() : texto.trim();
+        // Imagen de ejemplo (puedes cambiar la url por una real si tienes)
+        const imagenes = [
+          "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80",
+          "https://images.unsplash.com/photo-1465156799763-2c087c332922?auto=format&fit=crop&w=400&q=80",
+          "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=400&q=80"
+        ];
+        return {
+          destino: ciudad,
+          explicacion,
+          imagen: imagenes[idx % imagenes.length]
+        };
+      });
+    }
     return (
-      <div>
-        <h2>Recomendación personalizada</h2>
+      <div style={{ minHeight: "100vh", background: "#f7f7fa", padding: "2rem" }}>
+        <h2 style={{ textAlign: "center", marginBottom: 32 }}>¡Tus destinos recomendados!</h2>
         {cargando && <p>Cargando recomendación...</p>}
         {!cargando && (
-          <div>
-            <p>{recomendacion}</p>
-            <button onClick={() => window.location.reload()}>Volver a empezar</button>
+          <div style={{ display: "flex", gap: "2rem", flexWrap: "wrap", justifyContent: "center" }}>
+            {tarjetas.length > 0 ? tarjetas.map((t, i) => (
+              <div key={i} style={{
+                background: "#fff",
+                borderRadius: 16,
+                boxShadow: "0 4px 16px #ddd",
+                width: 320,
+                margin: "0 1rem 2rem 1rem",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                padding: 0
+              }}>
+                <a href="https://www.skyscanner.es/" target="_blank" rel="noopener noreferrer" style={{ width: "100%" }}>
+                  <img src={t.imagen} alt={t.destino} style={{ width: "100%", height: 200, objectFit: "cover", borderTopLeftRadius: 16, borderTopRightRadius: 16, cursor: "pointer" }} />
+                </a>
+                <div style={{ padding: "1.2rem", width: "100%" }}>
+                  <h3 style={{ margin: "0 0 0.5rem 0", textAlign: "center", color: "#2d2d2d" }}>{t.destino}</h3>
+                  <p style={{ color: "#555", fontSize: 16, textAlign: "center" }}>{t.explicacion}</p>
+                </div>
+              </div>
+            )) : <p>{recomendacion}</p>}
           </div>
         )}
+        <div style={{ width: "100%", marginTop: 24, textAlign: "center" }}>
+          <button onClick={() => window.location.reload()}>Volver a empezar</button>
+        </div>
       </div>
     );
   }
