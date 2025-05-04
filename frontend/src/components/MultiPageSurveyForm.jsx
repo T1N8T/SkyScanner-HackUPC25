@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+const PEXELS_API_KEY = import.meta.env.VITE_PEXELS_API_KEY;
 
 export default function MultiPageSurveyForm() {
   const [form, setForm] = useState({
@@ -24,6 +26,34 @@ export default function MultiPageSurveyForm() {
   const [modo, setModo] = useState(null); // "crear" o "unir"
   const [inputTripId, setInputTripId] = useState("");
   const [interesError, setInteresError] = useState("");
+  const [imagenesCiudades, setImagenesCiudades] = useState([null, null, null]);
+
+  useEffect(() => {
+    if (recomendacion) {
+      const partes = recomendacion.split(/\n?\s*\d+\.\s+/).filter(Boolean);
+      const ciudades = partes.slice(0, 3).map((texto) => {
+        const match = texto.match(/^([^:.]+)[:.]\s*(.*)$/s);
+        return match ? match[1].trim() : "";
+      });
+
+      Promise.all(
+        ciudades.map(async (ciudad) => {
+          if (!ciudad) return null;
+          const resp = await fetch(
+            `https://api.pexels.com/v1/search?query=${encodeURIComponent(ciudad)}&per_page=1`,
+            {
+              headers: {
+                Authorization: PEXELS_API_KEY,
+              },
+            }
+          );
+          if (!resp.ok) return null;
+          const data = await resp.json();
+          return data.photos && data.photos[0] ? data.photos[0].src.landscape : null;
+        })
+      ).then((imgs) => setImagenesCiudades(imgs));
+    }
+  }, [recomendacion]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -193,16 +223,54 @@ export default function MultiPageSurveyForm() {
     );
   }
   if (enviado && mostrarResultados) {
+    // Procesar la recomendación de Gemini en 3 tarjetas
+    let tarjetas = [];
+    if (recomendacion) {
+      const partes = recomendacion.split(/\n?\s*\d+\.\s+/).filter(Boolean);
+      tarjetas = partes.slice(0, 3).map((texto, idx) => {
+        // Extrae la ciudad hasta el primer ':' (dos puntos), el resto es la explicación
+        const match = texto.match(/^([^:]+):\s*(.*)$/s);
+        const ciudad = match ? match[1].trim() : `Destino ${idx + 1}`;
+        const explicacion = match ? match[2].trim() : texto.trim();
+        return {
+          destino: ciudad,
+          explicacion,
+          imagen: imagenesCiudades[idx] || "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80"
+        };
+      });
+    }
     return (
-      <div>
-        <h2>Recomendación personalizada</h2>
+      <div style={{ minHeight: "100vh", background: "#f7f7fa", padding: "2rem" }}>
+        <h2 style={{ textAlign: "center", marginBottom: 32 }}>¡Tus destinos recomendados!</h2>
         {cargando && <p>Cargando recomendación...</p>}
         {!cargando && (
-          <div>
-            <p>{recomendacion}</p>
-            <button onClick={() => window.location.reload()}>Volver a empezar</button>
+          <div style={{ display: "flex", gap: "2rem", flexWrap: "wrap", justifyContent: "center" }}>
+            {tarjetas.length > 0 ? tarjetas.map((t, i) => (
+              <div key={i} style={{
+                background: "#fff",
+                borderRadius: 16,
+                boxShadow: "0 4px 16px #ddd",
+                width: 320,
+                margin: "0 1rem 2rem 1rem",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                padding: 0
+              }}>
+                <a href="https://www.skyscanner.es/" target="_blank" rel="noopener noreferrer" style={{ width: "100%" }}>
+                  <img src={t.imagen} alt={t.destino} style={{ width: "100%", height: 200, objectFit: "cover", borderTopLeftRadius: 16, borderTopRightRadius: 16, cursor: "pointer" }} />
+                </a>
+                <div style={{ padding: "1.2rem", width: "100%" }}>
+                  <h3 style={{ margin: "0 0 0.5rem 0", textAlign: "center", color: "#2d2d2d" }}>{t.destino}</h3>
+                  <p style={{ color: "#555", fontSize: 16, textAlign: "center" }}>{t.explicacion}</p>
+                </div>
+              </div>
+            )) : <p>{recomendacion}</p>}
           </div>
         )}
+        <div style={{ width: "100%", marginTop: 24, textAlign: "center" }}>
+          <button onClick={() => window.location.reload()}>Volver a empezar</button>
+        </div>
       </div>
     );
   }
