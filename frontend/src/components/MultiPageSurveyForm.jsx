@@ -188,7 +188,6 @@ export default function MultiPageSurveyForm() {
             onChange={e => setNumMiembros(Number(e.target.value))}
           />
         </label>
-        <br />
         <button
           onClick={async () => {
             const resp = await fetch("http://localhost:5000/api/crear-grupo", {
@@ -199,6 +198,7 @@ export default function MultiPageSurveyForm() {
             const data = await resp.json();
             setTripId(data.trip_id);
           }}
+          disabled={numMiembros < 1}
         >
           Crear grupo
         </button>

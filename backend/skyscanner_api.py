@@ -9,7 +9,9 @@ load_dotenv()
 api_key = os.getenv("SKYSCANNER_API_KEY")
 BASE_URL = "https://partners.api.skyscanner.net/apiservices"
 
-def crear_busqueda(origen, destino, año, mes, dia):
+def crear_busqueda(origen, destino, año, mes, dia, adultos=1):
+    if adultos < 1:
+        raise ValueError("La cantidad de miembros del grupo debe ser al menos 1.")
     url = "https://partners.api.skyscanner.net/apiservices/v3/flights/live/search/create"
     headers = {
         "x-api-key": api_key,
@@ -32,7 +34,7 @@ def crear_busqueda(origen, destino, año, mes, dia):
                 }
             ],
             "cabinClass": "CABIN_CLASS_ECONOMY",
-            "adults": 1
+            "adults": adultos
         }
     }
     response = requests.post(url, headers=headers, json=data)
