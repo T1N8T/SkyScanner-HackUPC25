@@ -223,7 +223,41 @@ export default function MultiPageSurveyForm() {
     );
   }
   if (enviado && mostrarResultados) {
-    // Procesar la recomendación de Gemini en 3 tarjetas
+    // Si la recomendación es un mensaje de espera, muéstralo centrado y grande sobre el fondo
+    if (recomendacion && recomendacion.startsWith("Faltan respuestas")) {
+      return (
+        <div style={{
+          minHeight: "100vh",
+          width: "100vw",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          background: "#f7f7fa",
+          position: "fixed",
+          top: 0,
+          left: 0,
+          zIndex: 1000
+        }}>
+          <h1 style={{
+            fontSize: "3rem",
+            color: "#333",
+            textAlign: "center",
+            background: "none",
+            boxShadow: "none",
+            padding: 0,
+            margin: 0
+          }}>
+            {recomendacion}
+          </h1>
+          <button style={{ marginTop: "2rem" }} onClick={() => window.location.reload()}>
+            Volver a empezar
+          </button>
+        </div>
+      );
+    }
+
+    // Si hay recomendación real, muestra las 3 tarjetas como antes
     let tarjetas = [];
     if (recomendacion) {
       const partes = recomendacion.split(/\n?\s*\d+\.\s+/).filter(Boolean);
