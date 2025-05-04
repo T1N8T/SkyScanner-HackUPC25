@@ -128,5 +128,147 @@
         "trip_id": "trip_20250504020152444976"
       }
     ]
+  },
+  {
+    "trip_id": "trip_20250504021445801286",
+    "num_miembros": 2,
+    "respuestas": [
+      {
+        "nombre": "Mohamed",
+        "interes": [
+          "nocturno",
+          "arte"
+        ],
+        "presupuestomax": "200",
+        "presupuestoImportancia": "1.2",
+        "origen": "Barcelona",
+        "seguridadLGTB": "indiferente",
+        "seguridadmuj": "no",
+        "fechaInicio": "2025-05-18",
+        "internet": "si",
+        "idiomas": "Frances y español",
+        "preferencia": "No me gusta mucho la carne",
+        "trip_id": "trip_20250504021445801286"
+      },
+      {
+        "nombre": "David",
+        "interes": [
+          "playa",
+          "comida"
+        ],
+        "presupuestomax": "320",
+        "presupuestoImportancia": "4",
+        "origen": "Sevilla",
+        "seguridadLGTB": "indiferente",
+        "seguridadmuj": "si",
+        "fechaInicio": "2025-05-18",
+        "internet": "indiferente",
+        "idiomas": "Español",
+        "preferencia": "Quiero salir y explorar nuevos países",
+        "trip_id": "trip_20250504021445801286"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip_20250504022508961897",
+    "num_miembros": 1,
+    "respuestas": []
+  },
+  {
+    "trip_id": "trip_20250504022525140889",
+    "num_miembros": 1,
+    "respuestas": [
+      {
+        "nombre": "a",
+        "interes": [
+          "nocturno",
+          "comida"
+        ],
+        "presupuestomax": "120",
+        "presupuestoImportancia": "4",
+        "origen": "Londres",
+        "seguridadLGTB": "indiferente",
+        "seguridadmuj": "si",
+        "fechaInicio": "2025-05-18",
+        "internet": "no",
+        "idiomas": "Ingles y ruso",
+        "preferencia": "Me gustan los climas fríos",
+        "trip_id": "trip_20250504022525140889"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip_20250504023637747978",
+    "num_miembros": 1,
+    "respuestas": [
+      {
+        "nombre": "nig",
+        "interes": [
+          "nocturno",
+          "aventuras"
+        ],
+        "presupuestomax": "60",
+        "presupuestoImportancia": "5",
+        "origen": "Madrid",
+        "seguridadLGTB": "si",
+        "seguridadmuj": "si",
+        "fechaInicio": "2025-05-18",
+        "internet": "si",
+        "idiomas": "Español y inglés",
+        "preferencia": "Quiero un lugar donde pueda visitar fauna silvestre",
+        "trip_id": "trip_20250504023637747978"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip_20250504024237901535",
+    "num_miembros": 1,
+    "respuestas": []
+  },
+  {
+    "trip_id": "trip_20250504024237948272",
+    "num_miembros": 1,
+    "respuestas": [
+      {
+        "nombre": "ngg",
+        "interes": [
+          "nocturno",
+          "comida"
+        ],
+        "presupuestomax": "40",
+        "presupuestoImportancia": "5",
+        "origen": "valencia",
+        "seguridadLGTB": "si",
+        "seguridadmuj": "si",
+        "fechaInicio": "2025-05-18",
+        "internet": "si",
+        "idiomas": "Francés y español",
+        "preferencia": "Me gusta el deporte mucho",
+        "trip_id": "trip_20250504024237948272"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip_20250504025406797191",
+    "num_miembros": 1,
+    "respuestas": [
+      {
+        "nombre": "a",
+        "interes": [
+          "arte",
+          "comida"
+        ],
+        "presupuestomax": "500",
+        "presupuestoImportancia": "2",
+        "origen": "Logroño",
+        "seguridadLGTB": "si",
+        "seguridadmuj": "si",
+        "fechaInicio": "2025-05-18",
+        "internet": "si",
+        "idiomas": "Frnces y español",
+        "preferencia": "Me gusta el monte",
+        "trip_id": "trip_20250504025406797191"
+      }
+    ]
   }
 ]
