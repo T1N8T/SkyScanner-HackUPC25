@@ -238,5 +238,49 @@
         "trip_id": "trip_20250504043607285711"
       }
     ]
+  },
+  {
+    "trip_id": "trip_20250504044123072912",
+    "num_miembros": 2,
+    "respuestas": [
+      {
+        "nombre": "52345",
+        "interes": [
+          "playa"
+        ],
+        "presupuestomax": "2345234",
+        "presupuestoImportancia": "3",
+        "origen": "23452345",
+        "seguridadLGTB": "si",
+        "seguridadmuj": "si",
+        "fechaInicio": "2025-05-24",
+        "internet": "si",
+        "idiomas": "2345345",
+        "preferencia": "23452345",
+        "trip_id": "trip_20250504044123072912"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip_20250504044352472049",
+    "num_miembros": 2,
+    "respuestas": [
+      {
+        "nombre": "445",
+        "interes": [
+          "nocturno"
+        ],
+        "presupuestomax": "2345",
+        "presupuestoImportancia": "2",
+        "origen": "23452",
+        "seguridadLGTB": "si",
+        "seguridadmuj": "si",
+        "fechaInicio": "52345-04-23",
+        "internet": "si",
+        "idiomas": "234523",
+        "preferencia": "23452345",
+        "trip_id": "trip_20250504044352472049"
+      }
+    ]
   }
 ]

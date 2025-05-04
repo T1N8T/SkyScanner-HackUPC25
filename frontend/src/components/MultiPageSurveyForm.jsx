@@ -207,21 +207,51 @@ export default function MultiPageSurveyForm() {
     );
   }
 
-  if (enviado && !mostrarResultados) {
+  if (
+    enviado &&
+    mostrarResultados &&
+    recomendacion &&
+    recomendacion.startsWith("Faltan respuestas") &&
+    numMiembros > 1
+  ) {
     return (
-      <div>
-        <p>¡Gracias por responder!</p>
-        {tripId && (
-          <p>
-            Tu código de viaje es: <strong>{tripId}</strong>
-          </p>
-        )}
-        <button onClick={mostrarRecomendacion}>
-          Ver mi recomendación
-        </button>
+      <div style={{
+        minHeight: "100vh",
+        width: "100vw",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "#fff"
+      }}>
+        <div style={{
+          background: "#fff",
+          borderRadius: 24,
+          boxShadow: "0 4px 24px #eee",
+          padding: "3rem 2.5rem 2rem 2.5rem",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          minWidth: 340,
+          minHeight: 340,
+          maxWidth: 400
+        }}>
+          <h1 style={{
+            fontSize: "2.5rem",
+            color: "#333",
+            textAlign: "center",
+            marginBottom: "2rem"
+          }}>
+            {recomendacion}
+          </h1>
+          <button onClick={() => window.location.reload()}>
+            Volver a empezar
+          </button>
+        </div>
       </div>
     );
   }
+
   if (enviado && mostrarResultados) {
     // Procesar la recomendación de Gemini en 3 tarjetas
     let tarjetas = [];
@@ -310,6 +340,22 @@ export default function MultiPageSurveyForm() {
         <div style={{ width: "100%", marginTop: 24, textAlign: "center" }}>
           <button onClick={() => window.location.reload()}>Volver a empezar</button>
         </div>
+      </div>
+    );
+  }
+
+  if (enviado && !mostrarResultados) {
+    return (
+      <div>
+        <p>¡Gracias por responder!</p>
+        {tripId && (
+          <p>
+            Tu código de viaje es: <strong>{tripId}</strong>
+          </p>
+        )}
+        <button onClick={mostrarRecomendacion}>
+          Ver mi recomendación
+        </button>
       </div>
     );
   }
