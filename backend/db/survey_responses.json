@@ -343,5 +343,129 @@
     "trip_id": "trip_20250504004933991144",
     "num_miembros": 1,
     "respuestas": []
+  },
+  {
+    "trip_id": "trip_20250504011700178472",
+    "num_miembros": 1,
+    "respuestas": [
+      {
+        "nombre": "mipaló",
+        "interes": [
+          "comida",
+          "nocturno"
+        ],
+        "presupuestomax": "999999999999999999",
+        "presupuestoImportancia": "4.9",
+        "origen": "bangladesh",
+        "seguridadLGTB": "no",
+        "seguridadmuj": "no",
+        "fechaInicio": "2025-05-05",
+        "internet": "no",
+        "idiomas": "Castellano",
+        "preferencia": "Me gusta comer chorizo",
+        "trip_id": "trip_20250504011700178472"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip_20250504012200657798",
+    "num_miembros": 2,
+    "respuestas": []
+  },
+  {
+    "trip_id": "trip_20250504012348301801",
+    "num_miembros": 1,
+    "respuestas": []
+  },
+  {
+    "trip_id": "trip_20250504012448957078",
+    "num_miembros": 1,
+    "respuestas": []
+  },
+  {
+    "trip_id": "trip_20250504013017614159",
+    "num_miembros": 1,
+    "respuestas": []
+  },
+  {
+    "trip_id": "trip_20250504013434987492",
+    "num_miembros": 1,
+    "respuestas": [
+      {
+        "nombre": "David",
+        "interes": [
+          "aventuras",
+          "playa"
+        ],
+        "presupuestomax": "300",
+        "presupuestoImportancia": "3",
+        "origen": "albacete",
+        "seguridadLGTB": "indiferente",
+        "seguridadmuj": "no",
+        "fechaInicio": "2026-02-02",
+        "internet": "indiferente",
+        "idiomas": "español,ingles",
+        "preferencia": "me encantan los delfines",
+        "trip_id": "trip_20250504013434987492"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip_20250504013932562383",
+    "num_miembros": 2,
+    "respuestas": []
+  },
+  {
+    "trip_id": "trip_20250504014303574296",
+    "num_miembros": 1,
+    "respuestas": []
+  },
+  {
+    "trip_id": "trip_20250504014515743420",
+    "num_miembros": 1,
+    "respuestas": []
+  },
+  {
+    "trip_id": "trip_20250504014611844369",
+    "num_miembros": 1,
+    "respuestas": []
+  },
+  {
+    "trip_id": "trip_20250504015014710725",
+    "num_miembros": 1,
+    "respuestas": []
+  },
+  {
+    "trip_id": "trip_20250504015220461941",
+    "num_miembros": 1,
+    "respuestas": []
+  },
+  {
+    "trip_id": "trip_20250504015852863413",
+    "num_miembros": 1,
+    "respuestas": []
+  },
+  {
+    "trip_id": "trip_20250504020356426062",
+    "num_miembros": 1,
+    "respuestas": [
+      {
+        "nombre": "David",
+        "interes": [
+          "comida",
+          "arte"
+        ],
+        "presupuestomax": "300",
+        "presupuestoImportancia": "3",
+        "origen": "bruselas",
+        "seguridadLGTB": "no",
+        "seguridadmuj": "si",
+        "fechaInicio": "2025-06-13",
+        "internet": "indiferente",
+        "idiomas": "español,ingles",
+        "preferencia": "",
+        "trip_id": "trip_20250504020356426062"
+      }
+    ]
   }
 ]

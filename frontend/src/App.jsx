@@ -3,7 +3,7 @@ import MultiPageSurveyForm from './components/MultiPageSurveyForm';
 function App() {
   return (
     <div>
-      <h1>Cuestionario de Viaje (Multi-página)</h1>
+      <h1>Plan my Trip</h1>
       <MultiPageSurveyForm />
     </div>
   );

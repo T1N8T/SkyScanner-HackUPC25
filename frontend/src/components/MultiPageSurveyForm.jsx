@@ -23,6 +23,7 @@ export default function MultiPageSurveyForm() {
   const [numMiembros, setNumMiembros] = useState(2);
   const [modo, setModo] = useState(null); // "crear" o "unir"
   const [inputTripId, setInputTripId] = useState("");
+  const [interesError, setInteresError] = useState("");
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -37,14 +38,16 @@ export default function MultiPageSurveyForm() {
           ...prevForm,
           interes: [...prevForm.interes, value],
         }));
+        setInteresError("");
       } else {
-        alert("Solo puedes seleccionar hasta 2 opciones.");
+        setInteresError("Solo puedes seleccionar hasta 2 opciones.");
       }
     } else {
       setForm((prevForm) => ({
         ...prevForm,
         interes: prevForm.interes.filter((item) => item !== value),
       }));
+      setInteresError("");
     }
   };
 
@@ -206,7 +209,6 @@ export default function MultiPageSurveyForm() {
 
   return (
     <div>
-      <h1>Mípalo</h1>
       <form onSubmit={handleSubmit}>
         {currentPage === 0 && (
           <div>
@@ -237,61 +239,67 @@ export default function MultiPageSurveyForm() {
           <div>
             <label>¿Qué tipo de experiencias buscas principalmente en un viaje? (elige hasta 2)</label>
             <div>
-              <label>
+              <div className="option-row">
                 <input
                   type="checkbox"
                   name="interes"
                   value="nocturno"
                   checked={form.interes.includes("nocturno")}
                   onChange={handleCheckboxChange}
+                  id="interes-nocturno"
                 />
-              Vida nocturna y entretenimiento
-              </label>
-              <br />
-              <label>
+                <label htmlFor="interes-nocturno">Vida nocturna y entretenimiento</label>
+              </div>
+              <div className="option-row">
                 <input
                   type="checkbox"
                   name="interes"
                   value="playa"
                   checked={form.interes.includes("playa")}
                   onChange={handleCheckboxChange}
+                  id="interes-playa"
                 />
-                Playa
-              </label>
-              <br />
-              <label>
+                <label htmlFor="interes-playa">Playa</label>
+              </div>
+              <div className="option-row">
                 <input
                   type="checkbox"
                   name="interes"
                   value="arte"
                   checked={form.interes.includes("arte")}
                   onChange={handleCheckboxChange}
+                  id="interes-arte"
                 />
-                Arte y cultura
-              </label>
-              <br />
-              <label>
+                <label htmlFor="interes-arte">Arte y cultura</label>
+              </div>
+              <div className="option-row">
                 <input
                   type="checkbox"
                   name="interes"
                   value="comida"
                   checked={form.interes.includes("comida")}
                   onChange={handleCheckboxChange}
+                  id="interes-comida"
                 />
-                Buena comida
-              </label>
-              <br />
-              <label>
+                <label htmlFor="interes-comida">Buena comida</label>
+              </div>
+              <div className="option-row">
                 <input
                   type="checkbox"
                   name="interes"
                   value="aventuras"
                   checked={form.interes.includes("aventuras")}
                   onChange={handleCheckboxChange}
+                  id="interes-aventuras"
                 />
-                Aventuras al aire libre
-              </label>
+                <label htmlFor="interes-aventuras">Aventuras al aire libre</label>
+              </div>
             </div>
+            {interesError && (
+              <div style={{ color: '#ffb347', background: 'rgba(255,255,255,0.12)', borderRadius: '6px', padding: '0.5em', marginTop: '0.5em', fontWeight: 500 }}>
+                {interesError}
+              </div>
+            )}
             <br />
             <button type="button" onClick={prevPage}>
               Anterior
@@ -330,7 +338,7 @@ export default function MultiPageSurveyForm() {
               <input
                 name="presupuestomax"
                 type="number"
-                min="0"
+                min="1"
                 value={form.presupuestomax}
                 onChange={handleChange}
                 required
@@ -386,38 +394,39 @@ export default function MultiPageSurveyForm() {
           <div>
             <label>¿Te interesa que el destino sea especialmente seguro para mujeres? (elige una opción)</label>
             <div>
-              <label>
+              <div className="option-row">
                 <input
                   type="radio"
                   name="seguridadmuj"
                   value="si"
                   checked={form.seguridadmuj === "si"}
                   onChange={handleChange}
+                  id="seguridadmuj-si"
                 />
-               Sí, es una prioridad para mí.
-              </label>
-              <br />
-              <label>
-                <input
-                  type="radio"
-                  name="seguridadmuj"
-                  value="no"
-                  checked={form.seguridadmuj === "no"}
-                  onChange={handleChange}
-                />
-                No es algo que considere necesario.
-              </label>
-              <br />
-              <label>
+                <label htmlFor="seguridadmuj-si">Sí, es una prioridad para mí.</label>
+              </div>
+              <div className="option-row">
                 <input
                   type="radio"
                   name="seguridadmuj"
                   value="indiferente"
                   checked={form.seguridadmuj === "indiferente"}
                   onChange={handleChange}
+                  id="seguridadmuj-indiferente"
                 />
-                Sí, pero no es un requisito excluyente.
-              </label>
+                <label htmlFor="seguridadmuj-indiferente">Sí, pero no es un requisito excluyente.</label>
+              </div>
+              <div className="option-row">
+                <input
+                  type="radio"
+                  name="seguridadmuj"
+                  value="no"
+                  checked={form.seguridadmuj === "no"}
+                  onChange={handleChange}
+                  id="seguridadmuj-no"
+                />
+                <label htmlFor="seguridadmuj-no">No es algo que considere necesario.</label>
+              </div>
             </div>
             <br />
             <button type="button" onClick={prevPage}>
@@ -436,38 +445,39 @@ export default function MultiPageSurveyForm() {
           <div>
             <label>¿Te interesa que el destino sea especialmente seguro para personas LGTB? (elige una opción)</label>
             <div>
-              <label>
+              <div className="option-row">
                 <input
                   type="radio"
                   name="seguridadLGTB"
                   value="si"
                   checked={form.seguridadLGTB === "si"}
                   onChange={handleChange}
+                  id="seguridadLGTB-si"
                 />
-                Sí, es una prioridad para mí.
-              </label>
-              <br />
-              <label>
-                <input
-                  type="radio"
-                  name="seguridadLGTB"
-                  value="no"
-                  checked={form.seguridadLGTB === "no"}
-                  onChange={handleChange}
-                />
-                No es algo que considere necesario.
-              </label>
-              <br />
-              <label>
+                <label htmlFor="seguridadLGTB-si">Sí, es una prioridad para mí.</label>
+              </div>
+              <div className="option-row">
                 <input
                   type="radio"
                   name="seguridadLGTB"
                   value="indiferente"
                   checked={form.seguridadLGTB === "indiferente"}
                   onChange={handleChange}
+                  id="seguridadLGTB-indiferente"
                 />
-                Sí, pero no es un requisito excluyente.
-              </label>
+                <label htmlFor="seguridadLGTB-indiferente">Sí, pero no es un requisito excluyente.</label>
+              </div>
+              <div className="option-row">
+                <input
+                  type="radio"
+                  name="seguridadLGTB"
+                  value="no"
+                  checked={form.seguridadLGTB === "no"}
+                  onChange={handleChange}
+                  id="seguridadLGTB-no"
+                />
+                <label htmlFor="seguridadLGTB-no">No es algo que considere necesario.</label>
+              </div>
             </div>
             <br />
             <button type="button" onClick={prevPage}>
@@ -493,6 +503,7 @@ export default function MultiPageSurveyForm() {
               <input
                 name="fechaInicio"
                 type="date"
+                min={new Date().toISOString().split('T')[0]}
                 value={form.fechaInicio}
                 onChange={handleChange}
                 required
@@ -515,38 +526,39 @@ export default function MultiPageSurveyForm() {
           <div>
             <label>¿Qué tan importante es la calidad del WiFi en el destino? (elige una opción)</label>
             <div>
-              <label>
+              <div className="option-row">
                 <input
                   type="radio"
                   name="internet"
                   value="si"
                   checked={form.internet === "si"}
                   onChange={handleChange}
+                  id="internet-si"
                 />
-                Muy importante
-              </label>
-              <br />
-              <label>
+                <label htmlFor="internet-si">Muy importante</label>
+              </div>
+              <div className="option-row">
                 <input
                   type="radio"
                   name="internet"
                   value="indiferente"
                   checked={form.internet === "indiferente"}
                   onChange={handleChange}
+                  id="internet-indiferente"
                 />
-                Poco importante
-              </label>
-              <br />
-              <label>
+                <label htmlFor="internet-indiferente">Poco importante</label>
+              </div>
+              <div className="option-row">
                 <input
                   type="radio"
                   name="internet"
                   value="no"
                   checked={form.internet === "no"}
                   onChange={handleChange}
+                  id="internet-no"
                 />
-                No importante
-              </label>
+                <label htmlFor="internet-no">No importante</label>
+              </div>
             </div>
             <br />
             <button type="button" onClick={prevPage}>
@@ -598,7 +610,6 @@ export default function MultiPageSurveyForm() {
                 value={form.preferencia}
                 onChange={handleChange}
                 placeholder="Escribe aquí tus preferencias adicionales"
-                required
               />
             </label>
             <br />
@@ -607,7 +618,6 @@ export default function MultiPageSurveyForm() {
             </button>
             <button
               type="submit"
-              disabled={!form.preferencia.trim()}
             >
               Enviar
             </button>
