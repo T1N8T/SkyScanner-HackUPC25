@@ -1,58 +1,197 @@
 [
   {
-    "trip_id": "trip_20250504040523073742",
-    "num_miembros": 1,
-    "respuestas": [
-      {
-        "nombre": "David",
-        "interes": [
-          "playa",
-          "arte"
-        ],
-        "presupuestomax": "300",
-        "presupuestoImportancia": "3",
-        "origen": "lyon",
-        "seguridadLGTB": "no",
-        "seguridadmuj": "indiferente",
-        "fechaInicio": "2025-05-13",
-        "internet": "no",
-        "idiomas": "español",
-        "preferencia": "",
-        "trip_id": "trip_20250504040523073742"
-      }
-    ]
-  },
-  {
-    "trip_id": "trip_20250504040720179173",
+    "trip_id": "trip_20250504035316933664",
     "num_miembros": 2,
     "respuestas": [
       {
-        "nombre": "DAVID",
+        "nombre": "sf",
         "interes": [
-          "arte",
-          "playa"
+          "playa",
+          "nocturno"
         ],
-        "presupuestomax": "400",
+        "presupuestomax": "800",
         "presupuestoImportancia": "3",
-        "origen": "3",
-        "seguridadLGTB": "no",
-        "seguridadmuj": "indiferente",
-        "fechaInicio": "2025-05-09",
-        "internet": "no",
+        "origen": "Bilbao",
+        "seguridadLGTB": "si",
+        "seguridadmuj": "si",
+        "fechaInicio": "2025-05-24",
+        "internet": "si",
         "idiomas": "español",
-        "preferencia": "",
-        "trip_id": "trip_20250504040720179173"
+        "preferencia": "romantico",
+        "trip_id": "trip_20250504035316933664"
       }
     ]
   },
   {
-    "trip_id": "trip_20250504041040455801",
-    "num_miembros": 0,
-    "respuestas": []
+    "trip_id": "trip_20250504040409324498",
+    "num_miembros": 3,
+    "respuestas": [
+      {
+        "nombre": "fsf",
+        "interes": [
+          "playa"
+        ],
+        "presupuestomax": "700",
+        "presupuestoImportancia": "2",
+        "origen": "marihuana",
+        "seguridadLGTB": "si",
+        "seguridadmuj": "si",
+        "fechaInicio": "2025-05-24",
+        "internet": "si",
+        "idiomas": "marihuano",
+        "preferencia": "me gusta la marihuana",
+        "trip_id": "trip_20250504040409324498"
+      }
+    ]
   },
   {
-    "trip_id": "trip_20250504041157322154",
-    "num_miembros": 0,
-    "respuestas": []
+    "trip_id": "trip_20250504040531081763",
+    "num_miembros": 3,
+    "respuestas": [
+      {
+        "nombre": "asdf",
+        "interes": [
+          "playa"
+        ],
+        "presupuestomax": "434",
+        "presupuestoImportancia": "1",
+        "origen": "3434",
+        "seguridadLGTB": "indiferente",
+        "seguridadmuj": "si",
+        "fechaInicio": "2025-05-22",
+        "internet": "indiferente",
+        "idiomas": "344",
+        "preferencia": "334",
+        "trip_id": "trip_20250504040531081763"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip_20250504040904741844",
+    "num_miembros": 3,
+    "respuestas": [
+      {
+        "nombre": "sfg",
+        "interes": [
+          "playa"
+        ],
+        "presupuestomax": "3443",
+        "presupuestoImportancia": "2",
+        "origen": "asdfa",
+        "seguridadLGTB": "si",
+        "seguridadmuj": "si",
+        "fechaInicio": "2025-05-17",
+        "internet": "si",
+        "idiomas": "af",
+        "preferencia": "adf",
+        "trip_id": "trip_20250504040904741844"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip_20250504041259668461",
+    "num_miembros": 3,
+    "respuestas": [
+      {
+        "nombre": "dgh",
+        "interes": [
+          "playa"
+        ],
+        "presupuestomax": "6456546",
+        "presupuestoImportancia": "3",
+        "origen": "hfh",
+        "seguridadLGTB": "indiferente",
+        "seguridadmuj": "si",
+        "fechaInicio": "2025-05-28",
+        "internet": "si",
+        "idiomas": "563456",
+        "preferencia": "35634",
+        "trip_id": "trip_20250504041259668461"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip_20250504041352390180",
+    "num_miembros": 1,
+    "respuestas": [
+      {
+        "nombre": "Antonio",
+        "interes": [
+          "comida",
+          "nocturno"
+        ],
+        "presupuestomax": "150",
+        "presupuestoImportancia": "4",
+        "origen": "Valencia",
+        "seguridadLGTB": "si",
+        "seguridadmuj": "no",
+        "fechaInicio": "2025-05-31",
+        "internet": "si",
+        "idiomas": "Español",
+        "preferencia": "me gustan las mujeres guapas",
+        "trip_id": "trip_20250504041352390180"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip_20250504042149950498",
+    "num_miembros": 2,
+    "respuestas": [
+      {
+        "nombre": "asdf",
+        "interes": [
+          "nocturno",
+          "playa"
+        ],
+        "presupuestomax": "2131",
+        "presupuestoImportancia": "2",
+        "origen": "2adf",
+        "seguridadLGTB": "si",
+        "seguridadmuj": "si",
+        "fechaInicio": "2025-05-24",
+        "internet": "si",
+        "idiomas": "asdfa",
+        "preferencia": "asdfasdf",
+        "trip_id": "trip_20250504042149950498"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip_20250504042226691536",
+    "num_miembros": 2,
+    "respuestas": [
+      {
+        "nombre": "adfasd",
+        "interes": [
+          "nocturno"
+        ],
+        "presupuestomax": "12313",
+        "presupuestoImportancia": "2",
+        "origen": "34234",
+        "seguridadLGTB": "si",
+        "seguridadmuj": "si",
+        "fechaInicio": "2025-06-01",
+        "internet": "si",
+        "idiomas": "23424",
+        "preferencia": "234234",
+        "trip_id": "trip_20250504042226691536"
+      },
+      {
+        "nombre": "wqrqwer",
+        "interes": [
+          "nocturno"
+        ],
+        "presupuestomax": "342",
+        "presupuestoImportancia": "3",
+        "origen": "32423",
+        "seguridadLGTB": "si",
+        "seguridadmuj": "si",
+        "fechaInicio": "2025-05-23",
+        "internet": "si",
+        "idiomas": "234234",
+        "preferencia": "23423",
+        "trip_id": "trip_20250504042226691536"
+      }
+    ]
   }
 ]
