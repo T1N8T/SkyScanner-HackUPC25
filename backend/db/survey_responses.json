@@ -1,0 +1,58 @@
+[
+  {
+    "trip_id": "trip_20250504040523073742",
+    "num_miembros": 1,
+    "respuestas": [
+      {
+        "nombre": "David",
+        "interes": [
+          "playa",
+          "arte"
+        ],
+        "presupuestomax": "300",
+        "presupuestoImportancia": "3",
+        "origen": "lyon",
+        "seguridadLGTB": "no",
+        "seguridadmuj": "indiferente",
+        "fechaInicio": "2025-05-13",
+        "internet": "no",
+        "idiomas": "español",
+        "preferencia": "",
+        "trip_id": "trip_20250504040523073742"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip_20250504040720179173",
+    "num_miembros": 2,
+    "respuestas": [
+      {
+        "nombre": "DAVID",
+        "interes": [
+          "arte",
+          "playa"
+        ],
+        "presupuestomax": "400",
+        "presupuestoImportancia": "3",
+        "origen": "3",
+        "seguridadLGTB": "no",
+        "seguridadmuj": "indiferente",
+        "fechaInicio": "2025-05-09",
+        "internet": "no",
+        "idiomas": "español",
+        "preferencia": "",
+        "trip_id": "trip_20250504040720179173"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip_20250504041040455801",
+    "num_miembros": 0,
+    "respuestas": []
+  },
+  {
+    "trip_id": "trip_20250504041157322154",
+    "num_miembros": 0,
+    "respuestas": []
+  }
+]
