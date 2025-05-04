@@ -198,17 +198,16 @@ export default function MultiPageSurveyForm() {
     if (recomendacion) {
       // Divide el texto en 3 partes usando regex para separar por 1. 2. 3.
       const partes = recomendacion.split(/\n?\s*\d+\.\s+/).filter(Boolean);
+      const imagenes = [
+        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80",
+        "https://images.unsplash.com/photo-1465156799763-2c087c332922?auto=format&fit=crop&w=400&q=80",
+        "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=400&q=80"
+      ];
       tarjetas = partes.slice(0, 3).map((texto, idx) => {
-        // Extrae el nombre de la ciudad entre comillas al principio
-        const match = texto.match(/^"([^"]+)"\.?\s*(.*)$/s);
+        // Extrae la ciudad hasta el primer ':' o '.', el resto es la explicación
+        const match = texto.match(/^([^:.]+)[:.]\s*(.*)$/s);
         const ciudad = match ? match[1].trim() : `Destino ${idx + 1}`;
         const explicacion = match ? match[2].trim() : texto.trim();
-        // Imagen de ejemplo (puedes cambiar la url por una real si tienes)
-        const imagenes = [
-          "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80",
-          "https://images.unsplash.com/photo-1465156799763-2c087c332922?auto=format&fit=crop&w=400&q=80",
-          "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=400&q=80"
-        ];
         return {
           destino: ciudad,
           explicacion,

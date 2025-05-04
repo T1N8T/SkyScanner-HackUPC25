@@ -128,5 +128,51 @@
         "trip_id": "trip_20250504020152444976"
       }
     ]
+  },
+  {
+    "trip_id": "trip_20250504030106330277",
+    "num_miembros": 1,
+    "respuestas": [
+      {
+        "nombre": "P",
+        "interes": [
+          "playa",
+          "nocturno"
+        ],
+        "presupuestomax": "500",
+        "presupuestoImportancia": "1",
+        "origen": "Bilbao",
+        "seguridadLGTB": "si",
+        "seguridadmuj": "si",
+        "fechaInicio": "2025-05-18",
+        "internet": "si",
+        "idiomas": "ingles, español",
+        "preferencia": "surf",
+        "trip_id": "trip_20250504030106330277"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip_20250504030550165270",
+    "num_miembros": 1,
+    "respuestas": [
+      {
+        "nombre": "Adri",
+        "interes": [
+          "playa",
+          "nocturno"
+        ],
+        "presupuestomax": "800",
+        "presupuestoImportancia": "1",
+        "origen": "Bilbao",
+        "seguridadLGTB": "si",
+        "seguridadmuj": "si",
+        "fechaInicio": "2025-05-16",
+        "internet": "si",
+        "idiomas": "español",
+        "preferencia": "surf",
+        "trip_id": "trip_20250504030550165270"
+      }
+    ]
   }
 ]
