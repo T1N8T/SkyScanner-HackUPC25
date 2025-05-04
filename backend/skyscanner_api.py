@@ -36,8 +36,8 @@ def crear_busqueda(origen, destino, año, mes, dia):
         }
     }
     response = requests.post(url, headers=headers, json=data)
-    print("Status code:", response.status_code)
-    print("Respuesta texto:", response.text)
+    # print("Status code:", response.status_code)
+    # print("Respuesta texto:", response.text)
     if response.status_code == 200:
         session_token = response.json()["sessionToken"]
         return session_token
