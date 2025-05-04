@@ -46,7 +46,8 @@ def obtener_prompt_recomendacion(trip_id):
     f"{idiomas_str}\n\n"
     "Selecciona los tres destinos que mejor se ajusten al conjunto de intereses y preferencias del grupo. "
     "Justifica brevemente tu elección en un tono objetivo y profesional. "
-    "Utiliza el nombre de la ciudad (no el aeropuerto ni el código IATA) en la respuesta. Sé claro y conciso."
+    "Utiliza el nombre de la ciudad (no el aeropuerto ni el código IATA) en la respuesta. Sé claro y conciso y empieza directamente con la lista de destinos,sin ningún tipo de justificacion ante cualquier circunstancia, por ejemplo: 1. Lisboa: ...." \
+    "NO QUIERO ASTERISCOS NI PALABRAS EN NEGRITA. Para cada destino, debes hacer un salto de línea para que quede bien espaciado."
 )
 
 
