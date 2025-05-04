@@ -193,5 +193,50 @@
         "trip_id": "trip_20250504042226691536"
       }
     ]
+  },
+  {
+    "trip_id": "trip_20250504043406738666",
+    "num_miembros": 1,
+    "respuestas": [
+      {
+        "nombre": "antonio",
+        "interes": [
+          "nocturno",
+          "arte"
+        ],
+        "presupuestomax": "500",
+        "presupuestoImportancia": "2",
+        "origen": "Bilbao",
+        "seguridadLGTB": "si",
+        "seguridadmuj": "si",
+        "fechaInicio": "2025-05-29",
+        "internet": "si",
+        "idiomas": "español",
+        "preferencia": "pescar",
+        "trip_id": "trip_20250504043406738666"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip_20250504043607285711",
+    "num_miembros": 2,
+    "respuestas": [
+      {
+        "nombre": "asdf",
+        "interes": [
+          "playa"
+        ],
+        "presupuestomax": "3434",
+        "presupuestoImportancia": "3",
+        "origen": "34344",
+        "seguridadLGTB": "si",
+        "seguridadmuj": "si",
+        "fechaInicio": "2025-06-05",
+        "internet": "si",
+        "idiomas": "343434",
+        "preferencia": "3434",
+        "trip_id": "trip_20250504043607285711"
+      }
+    ]
   }
 ]

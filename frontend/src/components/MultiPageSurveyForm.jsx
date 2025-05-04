@@ -223,59 +223,64 @@ export default function MultiPageSurveyForm() {
     );
   }
   if (enviado && mostrarResultados) {
-    // Si la recomendación es un mensaje de espera, muéstralo centrado y grande sobre el fondo
-    if (recomendacion && recomendacion.startsWith("Faltan respuestas")) {
-      return (
-        <div style={{
-          minHeight: "100vh",
-          width: "100vw",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          background: "#f7f7fa",
-          position: "fixed",
-          top: 0,
-          left: 0,
-          zIndex: 1000
-        }}>
-          <h1 style={{
-            fontSize: "3rem",
-            color: "#333",
-            textAlign: "center",
-            background: "none",
-            boxShadow: "none",
-            padding: 0,
-            margin: 0
-          }}>
-            {recomendacion}
-          </h1>
-          <button style={{ marginTop: "2rem" }} onClick={() => window.location.reload()}>
-            Volver a empezar
-          </button>
-        </div>
-      );
-    }
-
-    // Si hay recomendación real, muestra las 3 tarjetas como antes
+    // Procesar la recomendación de Gemini en 3 tarjetas
     let tarjetas = [];
     if (recomendacion) {
+      // Divide el texto en 3 partes usando regex para separar por 1. 2. 3.
       const partes = recomendacion.split(/\n?\s*\d+\.\s+/).filter(Boolean);
+
+      // Obtener IATAs del trip_id actual desde trip_candidates.json (en localStorage o fetch)
+      let iatas = [];
+      try {
+        const tripCandidatesRaw = localStorage.getItem("trip_candidates");
+        let tripCandidates = null;
+        if (tripCandidatesRaw) {
+          tripCandidates = JSON.parse(tripCandidatesRaw);
+        }
+        // Si no está en localStorage, podrías cargarlo con fetch aquí si lo necesitas
+        const trip = tripCandidates && tripCandidates.find(c => c.trip_id === tripId);
+        if (trip && trip.iatas) iatas = trip.iatas;
+      } catch (e) {
+        iatas = [];
+      }
+
       tarjetas = partes.slice(0, 3).map((texto, idx) => {
-        // Extrae la ciudad hasta el primer ':' (dos puntos), el resto es la explicación
-        const match = texto.match(/^([^:]+):\s*(.*)$/s);
+        // Extrae la ciudad hasta el primer ':' o '.', el resto es la explicación
+        const match = texto.match(/^([^:.]+)[:.]\s*(.*)$/s);
         const ciudad = match ? match[1].trim() : `Destino ${idx + 1}`;
         const explicacion = match ? match[2].trim() : texto.trim();
+
+        // Buscar el IATA correspondiente a la ciudad (ignorando mayúsculas/minúsculas)
+        let iataDestino = iatas.find(iata =>
+          ciudad && ciudad.length >= 3 && iata.toLowerCase().includes(ciudad.toLowerCase().slice(0, 3))
+        );
+        if (!iataDestino) iataDestino = iatas[idx] || "";
+
+        // Obtener la fecha de inicio y formatearla como YYMMDD
+        let fecha = form.fechaInicio || "";
+        let fechaSkyscanner = "";
+        if (fecha) {
+          const [yyyy, mm, dd] = fecha.split("-");
+          fechaSkyscanner = `${yyyy.slice(2)}${mm}${dd}`;
+        }
+
+        // Construir URL de Skyscanner con IATA destino y fecha
+        let url = "https://www.skyscanner.es/";
+        if (iataDestino && fechaSkyscanner) {
+          url = `https://www.skyscanner.es/transport/flights//${iataDestino}/${fechaSkyscanner}/`;
+        }
+
         return {
           destino: ciudad,
           explicacion,
-          imagen: imagenesCiudades[idx] || "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80"
+          imagen: imagenesCiudades[idx] || "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80",
+          url
         };
       });
     }
     return (
       <div style={{ minHeight: "100vh", background: "#f7f7fa", padding: "2rem" }}>
-        <h2 style={{ textAlign: "center", marginBottom: 32 }}>¡Tus destinos recomendados!</h2>
+        <h2 style={{ textAlign: "center", marginBottom: 32, color: "#1abc9c" }}>¡Tus destinos recomendados!</h2>
         {cargando && <p>Cargando recomendación...</p>}
         {!cargando && (
           <div style={{ display: "flex", gap: "2rem", flexWrap: "wrap", justifyContent: "center" }}>
@@ -291,7 +296,7 @@ export default function MultiPageSurveyForm() {
                 alignItems: "center",
                 padding: 0
               }}>
-                <a href="https://www.skyscanner.es/" target="_blank" rel="noopener noreferrer" style={{ width: "100%" }}>
+                <a href={t.url} target="_blank" rel="noopener noreferrer" style={{ width: "100%" }}>
                   <img src={t.imagen} alt={t.destino} style={{ width: "100%", height: 200, objectFit: "cover", borderTopLeftRadius: 16, borderTopRightRadius: 16, cursor: "pointer" }} />
                 </a>
                 <div style={{ padding: "1.2rem", width: "100%" }}>

@@ -66,5 +66,38 @@
       "LGA",
       "BOS"
     ]
+  },
+  {
+    "trip_id": "trip_20250504043406738666",
+    "iatas": [
+      "MAD",
+      "SZG",
+      "LTN",
+      "CPH",
+      "VIE",
+      "SFO",
+      "LHR",
+      "DUB",
+      "CRL",
+      "SEN",
+      "BCN",
+      "OPO",
+      "LIS",
+      "BOS",
+      "LAX",
+      "GOT",
+      "LCY",
+      "YUL",
+      "AMS",
+      "LGW",
+      "HEL",
+      "YYZ",
+      "TLL",
+      "YQB",
+      "JFK",
+      "BRU",
+      "YHZ",
+      "STN"
+    ]
   }
 ]
