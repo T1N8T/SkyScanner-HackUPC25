@@ -343,5 +343,82 @@
     "trip_id": "trip_20250504004933991144",
     "num_miembros": 1,
     "respuestas": []
+  },
+  {
+    "trip_id": "trip_20250504014834040071",
+    "num_miembros": 2,
+    "respuestas": []
+  },
+  {
+    "trip_id": "trip_20250504014848186692",
+    "num_miembros": 2,
+    "respuestas": []
+  },
+  {
+    "trip_id": "trip_20250504015602439850",
+    "num_miembros": 2,
+    "respuestas": []
+  },
+  {
+    "trip_id": "trip_20250504020038902338",
+    "num_miembros": 2,
+    "respuestas": [
+      {
+        "nombre": "dadf",
+        "interes": [
+          "comida"
+        ],
+        "presupuestomax": "222",
+        "presupuestoImportancia": "3",
+        "origen": "mallorca",
+        "seguridadLGTB": "si",
+        "seguridadmuj": "no",
+        "fechaInicio": "2025-05-12",
+        "internet": "indiferente",
+        "idiomas": "español",
+        "preferencia": "no",
+        "trip_id": "trip_20250504020038902338"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip_20250504020152444976",
+    "num_miembros": 2,
+    "respuestas": [
+      {
+        "nombre": "a",
+        "interes": [
+          "aventuras",
+          "arte"
+        ],
+        "presupuestomax": "200",
+        "presupuestoImportancia": "1",
+        "origen": "barcelona",
+        "seguridadLGTB": "indiferente",
+        "seguridadmuj": "no",
+        "fechaInicio": "2025-05-18",
+        "internet": "si",
+        "idiomas": "español",
+        "preferencia": "me gusta la musica",
+        "trip_id": "trip_20250504020152444976"
+      },
+      {
+        "nombre": "b",
+        "interes": [
+          "nocturno",
+          "comida"
+        ],
+        "presupuestomax": "140",
+        "presupuestoImportancia": "3",
+        "origen": "madrid",
+        "seguridadLGTB": "no",
+        "seguridadmuj": "si",
+        "fechaInicio": "2025-05-18",
+        "internet": "si",
+        "idiomas": "inglés",
+        "preferencia": "me gusta la comida ",
+        "trip_id": "trip_20250504020152444976"
+      }
+    ]
   }
 ]

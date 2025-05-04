@@ -15,27 +15,33 @@ CORS(app)
 
 @app.route("/api/submit-survey", methods=["POST"])
 def submit_survey():
-    datos = request.json
-    trip_id = datos.get("trip_id")
-    ruta_json = os.path.join("db", "survey_responses.json")
-    if os.path.exists(ruta_json):
-        with open(ruta_json, "r", encoding="utf-8") as f:
-            respuestas = json.load(f)
-    else:
-        respuestas = []
+    try:
+        datos = request.json
+        trip_id = datos.get("trip_id")
+        ruta_json = os.path.join("db", "survey_responses.json")
+        if os.path.exists(ruta_json):
+            with open(ruta_json, "r", encoding="utf-8") as f:
+                respuestas = json.load(f)
+        else:
+            respuestas = []
 
-    grupo = next((g for g in respuestas if g.get("trip_id") == trip_id), None)
-    if grupo:
-        grupo["respuestas"].append(datos)
-    else:
-        # Si no hay trip_id o no existe, crea uno nuevo (para uso individual)
-        from datetime import datetime
-        trip_id = trip_id or f"trip_{datetime.now().strftime('%Y%m%d%H%M%S%f')}"
-        respuestas.append({
-            "trip_id": trip_id,
-            "num_miembros": 1,
-            "respuestas": [datos]
-        })
+        grupo = next((g for g in respuestas if g.get("trip_id") == trip_id), None)
+        if grupo:
+            grupo["respuestas"].append(datos)
+        else:
+            from datetime import datetime
+            trip_id = trip_id or f"trip_{datetime.now().strftime('%Y%m%d%H%M%S%f')}"
+            respuestas.append({
+                "trip_id": trip_id,
+                "num_miembros": 1,
+                "respuestas": [datos]
+            })
+        # >>> GUARDA EL ARCHIVO ACTUALIZADO AQUÍ <<<
+        with open(ruta_json, "w", encoding="utf-8") as f:
+            json.dump(respuestas, f, ensure_ascii=False, indent=2)
+        return jsonify({"status": "success", "message": "Formulario recibido", "trip_id": trip_id})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
 
 
 @app.route("/api/recomendacion", methods=["POST"])
@@ -64,6 +70,7 @@ def procesar():
         return jsonify({"status": "wait", "message": f"Faltan respuestas ({len(grupo['respuestas'])}/{num_miembros})"})
     try:
         descartar_paises(trip_id)
+        buscar_vuelos_presupuesto(trip_id)
         return jsonify({"status": "success"})
     except Exception as e:
         print("Error detectado:", e)
