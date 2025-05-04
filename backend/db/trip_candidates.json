@@ -4999,5 +4999,137 @@
       "MIA",
       "PMI"
     ]
+  },
+  {
+    "trip_id": "trip_20250504031152222573",
+    "iatas": [
+      "SYD",
+      "EAS",
+      "MLA"
+    ]
+  },
+  {
+    "trip_id": "trip_20250504032154855588",
+    "iatas": [
+      "IBZ",
+      "NCE",
+      "MIA",
+      "PMI"
+    ]
+  },
+  {
+    "trip_id": "trip_20250504032627733920",
+    "iatas": [
+      "IBZ",
+      "NCE",
+      "MIA",
+      "PMI"
+    ]
+  },
+  {
+    "trip_id": "trip_20250504032929148930",
+    "iatas": [
+      "MIA"
+    ]
+  },
+  {
+    "trip_id": "trip_20250504033427369880",
+    "iatas": [
+      "IBZ",
+      "NCE",
+      "PMI"
+    ]
+  },
+  {
+    "trip_id": "trip_20250504033625257111",
+    "iatas": [
+      "WMI",
+      "BCN",
+      "BEY",
+      "FMO",
+      "KRK",
+      "NYO",
+      "GIG",
+      "OPO",
+      "AMM",
+      "TLV",
+      "PTY",
+      "SEN",
+      "OGL",
+      "ATH",
+      "CAI",
+      "THR",
+      "LJU",
+      "ZRH",
+      "LUX",
+      "LCY",
+      "GLA",
+      "LIM",
+      "SLL",
+      "OSL",
+      "LAX",
+      "CPH",
+      "MEX",
+      "JFK",
+      "RAK",
+      "EWR",
+      "JTR",
+      "BDS",
+      "BGO",
+      "LIS",
+      "AMS",
+      "SDQ",
+      "DXB",
+      "ORY",
+      "RBA",
+      "BLQ",
+      "BGW",
+      "LBD",
+      "ORK",
+      "BOD",
+      "KMS",
+      "NAP",
+      "FCO",
+      "OTP",
+      "JED",
+      "LGW",
+      "GDN",
+      "LHR",
+      "SHJ",
+      "GOT",
+      "CDG",
+      "HEL",
+      "SFA",
+      "AGP",
+      "PMO",
+      "FEZ",
+      "PKX",
+      "MAO",
+      "YHM",
+      "SOF",
+      "VIE",
+      "CMN",
+      "NBO",
+      "BEG",
+      "VLC",
+      "LOS",
+      "BUD",
+      "STN",
+      "SCL",
+      "KWI",
+      "RUH",
+      "AEP",
+      "TRF",
+      "LYS",
+      "BVA",
+      "TNG",
+      "RIX",
+      "DBV",
+      "WAW",
+      "GRU",
+      "PIK",
+      "ZAG",
+      "ACC"
+    ]
   }
 ]

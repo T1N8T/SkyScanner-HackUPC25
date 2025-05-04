@@ -174,5 +174,175 @@
         "trip_id": "trip_20250504030550165270"
       }
     ]
+  },
+  {
+    "trip_id": "trip_20250504031152222573",
+    "num_miembros": 1,
+    "respuestas": [
+      {
+        "nombre": "mipalo",
+        "interes": [
+          "playa",
+          "arte"
+        ],
+        "presupuestomax": "500",
+        "presupuestoImportancia": "2",
+        "origen": "Frankfurt",
+        "seguridadLGTB": "si",
+        "seguridadmuj": "si",
+        "fechaInicio": "2025-05-23",
+        "internet": "si",
+        "idiomas": "aleman,portugues",
+        "preferencia": "me gusta la carne asada y la buena comida",
+        "trip_id": "trip_20250504031152222573"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip_20250504032154855588",
+    "num_miembros": 1,
+    "respuestas": [
+      {
+        "nombre": "mipalo",
+        "interes": [
+          "playa",
+          "nocturno"
+        ],
+        "presupuestomax": "1000",
+        "presupuestoImportancia": "1",
+        "origen": "Bilbao",
+        "seguridadLGTB": "si",
+        "seguridadmuj": "si",
+        "fechaInicio": "2025-05-24",
+        "internet": "si",
+        "idiomas": "ingles",
+        "preferencia": "surf",
+        "trip_id": "trip_20250504032154855588"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip_20250504032627733920",
+    "num_miembros": 1,
+    "respuestas": [
+      {
+        "nombre": "mipalo",
+        "interes": [
+          "playa",
+          "nocturno"
+        ],
+        "presupuestomax": "500",
+        "presupuestoImportancia": "2",
+        "origen": "Bilbao",
+        "seguridadLGTB": "si",
+        "seguridadmuj": "si",
+        "fechaInicio": "2025-05-17",
+        "internet": "si",
+        "idiomas": "ingles",
+        "preferencia": "surf",
+        "trip_id": "trip_20250504032627733920"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip_20250504032923500033",
+    "num_miembros": 2,
+    "respuestas": []
+  },
+  {
+    "trip_id": "trip_20250504032929148930",
+    "num_miembros": 1,
+    "respuestas": [
+      {
+        "nombre": "mipalo",
+        "interes": [
+          "nocturno",
+          "playa"
+        ],
+        "presupuestomax": "600",
+        "presupuestoImportancia": "1",
+        "origen": "Bilbao",
+        "seguridadLGTB": "si",
+        "seguridadmuj": "si",
+        "fechaInicio": "2025-05-17",
+        "internet": "si",
+        "idiomas": "ingles",
+        "preferencia": "surf",
+        "trip_id": "trip_20250504032929148930"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip_20250504033420935350",
+    "num_miembros": 2,
+    "respuestas": []
+  },
+  {
+    "trip_id": "trip_20250504033427369880",
+    "num_miembros": 1,
+    "respuestas": [
+      {
+        "nombre": "Adri",
+        "interes": [
+          "playa",
+          "nocturno"
+        ],
+        "presupuestomax": "600",
+        "presupuestoImportancia": "2",
+        "origen": "Bilbao",
+        "seguridadLGTB": "si",
+        "seguridadmuj": "si",
+        "fechaInicio": "2025-05-23",
+        "internet": "si",
+        "idiomas": "ingles",
+        "preferencia": "surf",
+        "trip_id": "trip_20250504033427369880"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip_20250504033531001742",
+    "num_miembros": 2,
+    "respuestas": [
+      {
+        "nombre": "sf",
+        "interes": [
+          "nocturno",
+          "playa"
+        ],
+        "presupuestomax": "35354",
+        "presupuestoImportancia": "3",
+        "origen": "3afgs",
+        "seguridadLGTB": "no",
+        "seguridadmuj": "indiferente",
+        "fechaInicio": "2025-05-21",
+        "internet": "no",
+        "idiomas": "sdfgs",
+        "preferencia": "sdfgsdfg",
+        "trip_id": "trip_20250504033531001742"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip_20250504033625257111",
+    "num_miembros": 1,
+    "respuestas": [
+      {
+        "nombre": "mipalo",
+        "interes": [
+          "comida"
+        ],
+        "presupuestomax": "500",
+        "presupuestoImportancia": "1",
+        "origen": "Bilbao",
+        "seguridadLGTB": "no",
+        "seguridadmuj": "no",
+        "fechaInicio": "2025-05-23",
+        "internet": "no",
+        "idiomas": "todos",
+        "preferencia": "ninguna",
+        "trip_id": "trip_20250504033625257111"
+      }
+    ]
   }
 ]

@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+const PEXELS_API_KEY = import.meta.env.VITE_PEXELS_API_KEY;
 
 export default function MultiPageSurveyForm() {
   const [form, setForm] = useState({
@@ -24,6 +26,34 @@ export default function MultiPageSurveyForm() {
   const [modo, setModo] = useState(null); // "crear" o "unir"
   const [inputTripId, setInputTripId] = useState("");
   const [interesError, setInteresError] = useState("");
+  const [imagenesCiudades, setImagenesCiudades] = useState([null, null, null]);
+
+  useEffect(() => {
+    if (recomendacion) {
+      const partes = recomendacion.split(/\n?\s*\d+\.\s+/).filter(Boolean);
+      const ciudades = partes.slice(0, 3).map((texto) => {
+        const match = texto.match(/^([^:.]+)[:.]\s*(.*)$/s);
+        return match ? match[1].trim() : "";
+      });
+
+      Promise.all(
+        ciudades.map(async (ciudad) => {
+          if (!ciudad) return null;
+          const resp = await fetch(
+            `https://api.pexels.com/v1/search?query=${encodeURIComponent(ciudad)}&per_page=1`,
+            {
+              headers: {
+                Authorization: PEXELS_API_KEY,
+              },
+            }
+          );
+          if (!resp.ok) return null;
+          const data = await resp.json();
+          return data.photos && data.photos[0] ? data.photos[0].src.landscape : null;
+        })
+      ).then((imgs) => setImagenesCiudades(imgs));
+    }
+  }, [recomendacion]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -196,22 +226,16 @@ export default function MultiPageSurveyForm() {
     // Procesar la recomendación de Gemini en 3 tarjetas
     let tarjetas = [];
     if (recomendacion) {
-      // Divide el texto en 3 partes usando regex para separar por 1. 2. 3.
       const partes = recomendacion.split(/\n?\s*\d+\.\s+/).filter(Boolean);
-      const imagenes = [
-        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80",
-        "https://images.unsplash.com/photo-1465156799763-2c087c332922?auto=format&fit=crop&w=400&q=80",
-        "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=400&q=80"
-      ];
       tarjetas = partes.slice(0, 3).map((texto, idx) => {
-        // Extrae la ciudad hasta el primer ':' o '.', el resto es la explicación
-        const match = texto.match(/^([^:.]+)[:.]\s*(.*)$/s);
+        // Extrae la ciudad hasta el primer ':' (dos puntos), el resto es la explicación
+        const match = texto.match(/^([^:]+):\s*(.*)$/s);
         const ciudad = match ? match[1].trim() : `Destino ${idx + 1}`;
         const explicacion = match ? match[2].trim() : texto.trim();
         return {
           destino: ciudad,
           explicacion,
-          imagen: imagenes[idx % imagenes.length]
+          imagen: imagenesCiudades[idx] || "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80"
         };
       });
     }
